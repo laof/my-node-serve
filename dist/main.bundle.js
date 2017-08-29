@@ -1328,7 +1328,8 @@ var WeatheComponent = (function () {
         var _this = this;
         this.jsonp = jsonp;
         this.http = http;
-        this.url = 'http://127.0.0.1:8888/queryWeather?callback=JSONP_CALLBACK&city=';
+        // private url = 'http://127.0.0.1:8888/queryWeather?callback=JSONP_CALLBACK&city=';
+        this.url = '/weather/forecast?city=';
         this.city = '南充';
         http.get('data/citycode.json').map(function (res) {
             return res.json();
@@ -1362,14 +1363,11 @@ var WeatheComponent = (function () {
         }
         var city = this.getCityID(this.city);
         if (city) {
-            this.jsonp.request(this.url + city.townID).map(function (res) {
-                var data = res.json();
-                data.data = data.data.replace(/\\/, '%');
-                data.data = unescape(data.data);
-                data.data = JSON.parse(data.data);
-                return data;
+            //this.jsonp.request(this.url + city.townID)
+            this.http.get(this.url + city.townID).map(function (res) {
+                return res.json();
             }).subscribe(function (res) {
-                _this.weather = res.data.weather['0'];
+                _this.weather = res.weather['0'];
             });
         }
         else {
