@@ -48,14 +48,15 @@ module.exports = [
         http(req, res) {
             let username = req.body.username;
             let password = req.body.password;
-            if (username == '' || password == '') {
-                res.send({ message: '用户名或者密码错误' });
+            if (username === 'admin' && password === 'adc123.com') {
+                req.session.userId = new Date().getTime();
+                req.session.username = req.body.username;
+                req.session.password = req.body.password;
+                res.redirect("/index1.html");
                 return;
             }
-            req.session.userId = new Date().getTime();
-            req.session.username = req.body.username;
-            req.session.password = req.body.password;
-            res.redirect("/index1.html");
+            res.send({ message: '用户名或者密码错误' });
+
         }
     },
     {

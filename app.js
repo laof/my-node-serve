@@ -5,7 +5,7 @@ let cookieParser = require('cookie-parser');
 let router = require('./serve/router');
 let filter = require('./serve/filter');
 let app = express();
-var bodyParser = require('body-parser');
+let bodyParser = require('body-parser');
 
 let port = 3030;
 app.use(express.static('src'));
