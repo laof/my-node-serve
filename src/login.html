@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>login</title>
+
+</head>
+
+<body>
+  <div id="app">
+    username：<input type="text" v-model:value="username"><br> 
+    password: <input type="text" v-model:value="password"><br>
+    <a href="javascript:;" v-on:click="submit()">submit</a>
+  </div>
+  <script src="js/jquery3.2.1.js"></script>
+  <script src="js/vue.js"></script>
+  <script>
+    let vue = new Vue({
+      el: '#app',
+      data: {
+        url: '/login',
+        username: '',
+        password: ''
+      },
+      methods: {
+        submit() {
+
+          let param = {
+            username: this.username,
+            password: this.password,
+          };
+
+          let promise = new Promise((resolve, reject) => {
+            $.ajax({
+              url: this.url,
+              type: 'post',
+              data: param, success(data) {
+                resolve(data);
+              }, error(error) {
+                reject(error);
+              }
+            })
+          });
+
+          promise.then(res => {
+            this.color = 'green';
+            console.log('成功');
+          }, error => {
+
+            this.color = 'red';
+
+          })
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

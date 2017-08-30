@@ -4,6 +4,45 @@ let qs = require('querystring');
 let url = require('url');
 module.exports = [
     {
+        api:'/login',
+        type:'get',
+        http(req, res){
+            res.sendfile('src/login.html');
+        }
+    },
+    {
+        api: api.user_info,
+        http(req, res) {
+
+            if (!req.session.userId) {
+                res.redirect('/login', { title: '请先登录', error: errors });
+                return;
+            }
+            res.send({
+                sucess: !0, user: {
+                    id: req.session.userId,
+                    name: req.session.username
+                }
+            });
+        }
+    },
+    {
+        api: api.login,
+        type:'post',
+        http(req, res) {
+            let username = req.body.username;
+            let password = req.body.password;
+            if(!password || !password){
+                res.send({message:'用户名或者密码错误'});
+                return;
+            }
+            req.session.userId = new Date().getTime();
+            req.session.username = req.body.username;
+            req.session.password = req.body.password;
+            res.redirect("/");
+        }
+    },
+    {
         api: api.weather_forecast,
         http(req, res) {
 

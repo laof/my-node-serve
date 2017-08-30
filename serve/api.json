@@ -1,4 +1,6 @@
 {
     "index": "/*",
+    "login": "/login",
+    "user_info": "/userInfo",
     "weather_forecast": "/weather/forecast"
 }
