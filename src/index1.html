@@ -73,7 +73,9 @@
   <script src="js/http.js"></script>
   <script>
     $(document).ajaxComplete((req, res) => {
-      console.log(res);
+      if (res.responseJSON && res.responseJSON.code == 304) {
+        location.reload();
+      }
     });
   </script>
 </body>

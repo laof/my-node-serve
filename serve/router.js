@@ -1,4 +1,3 @@
-let api = require('./api.json');
 let http = require('http');
 let qs = require('querystring');
 let url = require('url');
@@ -33,7 +32,7 @@ module.exports = [
         }
     },
     {
-        api: api.user_info,
+        api: '/userInfo',
         http(req, res) {
             res.send({
                 sucess: !0, user: {
@@ -61,12 +60,11 @@ module.exports = [
     },
     {
         isLogin: true,
-        api: api.weather_forecast,
-
+        api: '/weather/forecast',
         http(req, res) {
 
             let city = req.body.city;
-            console.log(req.headers.cookie);
+            //console.log(req.headers.cookie);
             //console.log(arg.city);CHSC000000
 
             let promise = new Promise((resolve, reject) => {
@@ -98,7 +96,7 @@ module.exports = [
         }
     },
     {
-        api: api.index,
+        api: '/*',
         http(req, res) {
             res.sendfile('dist/index.html');
         }

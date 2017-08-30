@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(session({
     secret: '12345', 
     name: 'SESSIONID', 
-    cookie: { maxAge: 80000 }, 
+    cookie: { maxAge: 60*60*1000 }, //10分钟
     resave: false, 
     saveUninitialized: true,
 }))
