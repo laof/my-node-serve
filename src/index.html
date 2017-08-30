@@ -45,23 +45,25 @@
 <body>
   <div id="app" v-bind:style="{display:block}">
     <textarea placeholder="输入URL地址：" v-model="url"></textarea>
-    <p class="options-bar">
-      <a v-if="sendtype==='post'" href="javascript:;" v-on:click="add">新增</a>
-       <label for="post">post<input v-model="sendtype" name='sendtype' id="post" value="post" type="radio"></label>
-       <label for="get">get<input v-model="sendtype" name='sendtype' id="get" value="get" type="radio"></label>
-    </p>
-    <div v-if="sendtype==='post'">
-      <table>
-        <tr v-for="(item, index) in param">
-          <td>key：<input type="text" v-model:value="item.key"> </td>
-          <td>value：<input type="text" v-model:value="item.value"></td>
-          <td><a href="javascript:;" v-on:click="remove(index)">删除</a></td>
-        </tr>
-      </table>
 
-    </div>
     <textarea v-model="request" v-bind:style="{ color: color}"></textarea>
     <p><a href="javascript:;" v-on:click="http">send</a></p>
+
+    <p class="options-bar">
+        <a v-if="sendtype==='post'" href="javascript:;" v-on:click="add">新增</a>
+         <label for="post">post<input v-model="sendtype" name='sendtype' id="post" value="post" type="radio"></label>
+         <label for="get">get<input v-model="sendtype" name='sendtype' id="get" value="get" type="radio"></label>
+      </p>
+      <div v-if="sendtype==='post'">
+        <table>
+          <tr v-for="(item, index) in param">
+            <td>key：<input type="text" v-model:value="item.key"> </td>
+            <td>value：<input type="text" v-model:value="item.value"></td>
+            <td><a href="javascript:;" v-on:click="remove(index)">删除</a></td>
+          </tr>
+        </table>
+  
+      </div>
   </div>
   <script src="js/jquery3.2.1.js"></script>
   <script src="js/vue.js"></script>
