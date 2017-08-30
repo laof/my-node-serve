@@ -7,9 +7,9 @@ module.exports = [
         api: api.weather_forecast,
         http(req, res) {
 
-            let arg = url.parse(req.url, true).query;
-
-            //console.log(arg.city);
+            let arg = url.parse(req.url, false).query;
+            console.log(req.headers.cookie);
+            //console.log(arg.city);CHSC000000
 
             let promise = new Promise((resolve, reject) => {
 

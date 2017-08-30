@@ -20,9 +20,10 @@ let vue = new Vue({
     request: '',
     sendtype: 'post',
     checked: true,
-    url: 'http://news.baidu.com/widget?id=LocalNews&ajax=json&t=1504067584738',
+    // url: 'http://news.baidu.com/widget?id=LocalNews&ajax=json&t=1504067584738',
+    url:'/weather/forecast',
     param: [
-      { key: 'id', value: 1 }
+      { key: 'city', value: 'CHSC000000' }
     ]
   },
   methods: {
