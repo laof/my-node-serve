@@ -18,13 +18,9 @@ module.exports = [
     {
         api: '/index',
         type: 'get',
+        isLogin:true,
         http(req, res) {
-            if (req.session.userId) {
-                res.sendfile('src/index.html');
-            } else {
-                res.redirect('/login');
-            }
-
+            res.sendfile('src/index.html');
         }
     },
     {
@@ -40,13 +36,9 @@ module.exports = [
         }
     },
     {
+
         api: api.user_info,
         http(req, res) {
-
-            if (!req.session.userId) {
-                res.redirect('/login', { title: '请先登录', error: errors });
-                return;
-            }
             res.send({
                 sucess: !0, user: {
                     id: req.session.userId,
@@ -56,7 +48,7 @@ module.exports = [
         }
     },
     {
-        api: api.login,
+        api: '/user/login',
         type: 'post',
         http(req, res) {
             let username = req.body.username;
