@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>test</title>
+  <style>
+    #app {
+      width: 80%;
+      margin: auto;
+      display: none;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      display: block;
+      padding: 5px;
+      font-size: 16px;
+      margin-top: 30px;
+      height: 100px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="app" v-bind:style="{display:block}">
+    <textarea placeholder="输入URL地址：" v-model="url"></textarea>
+    <div>
+      <table>
+        <tr>
+          <td>key</td>
+          <td>value</td>
+        </tr>
+        <tr v-for="item in param">
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+        </tr>
+      </table>
+
+    </div>
+    <textarea v-model="request" v-bind:style="{ color: color}"></textarea>
+    <button v-on:click="http">send</button>
+  </div>
+  <script src="js/jquery3.2.1.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/http.js"></script>
+</body>
+
+</html>

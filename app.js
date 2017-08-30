@@ -4,9 +4,9 @@ let exec = require('child_process').exec;
 let router = require('./serve/router');
 let app = express();
 
-let port = 3000;
+let port = 3030;
 
-app.use(express.static('dist'));
+app.use(express.static('src'));
 
 
 router.forEach((v, i) => {
