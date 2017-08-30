@@ -8,13 +8,14 @@ let app = express();
 var bodyParser = require('body-parser');
 
 let port = 3030;
-
 app.use(express.static('src'));
+// app.use();
 // app.use(express.cookieParser('sctalk admin manager'));
 // app.use(express.session());
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser());
+
 app.use(session({
     secret: '12345', 
     name: 'SESSIONID', 
@@ -22,6 +23,7 @@ app.use(session({
     resave: false, 
     saveUninitialized: true,
 }))
+
 router.forEach((v, i) => {
     let type = 'post';
     if (Object.is(v.type, 'get')) {
@@ -41,4 +43,4 @@ router.forEach((v, i) => {
 
 app.listen(port);
 console.log('>start');
-exec(`start http://127.0.0.1:${port}`);
+exec(`start http://127.0.0.1:${port}/index`);

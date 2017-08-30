@@ -4,23 +4,20 @@ let qs = require('querystring');
 let url = require('url');
 module.exports = [
     {
-        api: '/',
-        type: 'get',
+        api: '/outlogin',
         http(req, res) {
-            if (req.session.userId) {
-                res.sendfile('/index');
-            } else {
-                res.redirect('/login');
-            }
-
+            req.session.userId = null;
+            req.session.username = null;
+            req.session.password = null;
+            res.redirect('/index');
         }
     },
     {
         api: '/index',
         type: 'get',
-        isLogin:true,
+        isLogin: true,
         http(req, res) {
-            res.sendfile('src/index.html');
+            res.sendfile('src/index1.html');
         }
     },
     {
@@ -36,7 +33,6 @@ module.exports = [
         }
     },
     {
-
         api: api.user_info,
         http(req, res) {
             res.send({
@@ -60,21 +56,22 @@ module.exports = [
             req.session.userId = new Date().getTime();
             req.session.username = req.body.username;
             req.session.password = req.body.password;
-            res.redirect("/index.html");
+            res.redirect("/index1.html");
         }
     },
     {
-        isLogin:true,
+        isLogin: true,
         api: api.weather_forecast,
+
         http(req, res) {
 
-            let arg = req.body.city;
+            let city = req.body.city;
             console.log(req.headers.cookie);
             //console.log(arg.city);CHSC000000
 
             let promise = new Promise((resolve, reject) => {
 
-                http.get('http://tj.nineton.cn/Heart/index/all?city=' + arg.city, (res) => {
+                http.get('http://tj.nineton.cn/Heart/index/all?city=' + city, (res) => {
                     let data = '';
                     let titles = [];
                     res.setEncoding('utf-8');

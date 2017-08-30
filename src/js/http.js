@@ -20,13 +20,55 @@ let vue = new Vue({
     request: '',
     sendtype: 'post',
     checked: true,
+    username: '',
     // url: 'http://news.baidu.com/widget?id=LocalNews&ajax=json&t=1504067584738',
-    url:'/weather/forecast',
+    url: '/weather/forecast',
+    outlogin: '/outlogin',
+    getUserInfo: '/userInfo',
     param: [
       { key: 'city', value: 'CHSC000000' }
     ]
   },
+  created() {
+    let promise = new Promise((resolve, reject) => {
+      $.ajax({
+        url: this.getUserInfo,
+        type: 'post',
+        data: {}, success(data) {
+          resolve(data);
+        }, error(error) {
+          reject(error);
+        }
+      })
+    });
+
+    promise.then(res => {
+      this.username = res.user.name;
+    }, error => {
+      console.log(error);
+    })
+  },
   methods: {
+    gooutlogin() {
+
+      let promise = new Promise((resolve, reject) => {
+        $.ajax({
+          url: this.outlogin,
+          type: 'post',
+          data: {}, success(data) {
+            resolve(data);
+          }, error(error) {
+            reject(error);
+          }
+        })
+      });
+
+      promise.then(res => {
+        location.reload();
+      }, error => {
+        console.log(error);
+      })
+    },
     add() {
       this.param.push({ key: null, value: null });
     },
