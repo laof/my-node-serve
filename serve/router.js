@@ -4,10 +4,39 @@ let qs = require('querystring');
 let url = require('url');
 module.exports = [
     {
-        api:'/login',
-        type:'get',
-        http(req, res){
-            res.sendfile('src/login.html');
+        api: '/',
+        type: 'get',
+        http(req, res) {
+            if (req.session.userId) {
+                res.sendfile('/index');
+            } else {
+                res.redirect('/login');
+            }
+
+        }
+    },
+    {
+        api: '/index',
+        type: 'get',
+        http(req, res) {
+            if (req.session.userId) {
+                res.sendfile('src/index.html');
+            } else {
+                res.redirect('/login');
+            }
+
+        }
+    },
+    {
+        api: '/login',
+        type: 'get',
+        http(req, res) {
+            if (req.session.userId) {
+                res.redirect('/index');
+            } else {
+                res.sendfile('src/login.html');
+            }
+
         }
     },
     {
@@ -28,25 +57,26 @@ module.exports = [
     },
     {
         api: api.login,
-        type:'post',
+        type: 'post',
         http(req, res) {
             let username = req.body.username;
             let password = req.body.password;
-            if(!password || !password){
-                res.send({message:'用户名或者密码错误'});
+            if (username == '' || password == '') {
+                res.send({ message: '用户名或者密码错误' });
                 return;
             }
             req.session.userId = new Date().getTime();
             req.session.username = req.body.username;
             req.session.password = req.body.password;
-            res.redirect("/");
+            res.redirect("/index.html");
         }
     },
     {
+        isLogin:true,
         api: api.weather_forecast,
         http(req, res) {
 
-            let arg = url.parse(req.url, false).query;
+            let arg = req.body.city;
             console.log(req.headers.cookie);
             //console.log(arg.city);CHSC000000
 
