@@ -1,27 +1,56 @@
+
+
+
 let vue = new Vue({
   el: '#app',
+
+  filters: {
+    getkey(o) {
+      let key = Object.keys(o)[0];
+      return key;
+    },
+    getValue(o) {
+      let key = Object.keys(o)[0];
+      return o[key];
+    }
+  },
   data: {
-    block:'block',
-    color:'#666',
+    block: 'block',
+    color: '#666',
     request: '',
-    url: 'http://192.168.20.154:20010/ias/user/query?lang=zh-cn&token=pacswure3thb4nawtfn3lbva9n4xrqtw&pageIndex=1&pageSize=10',
+    sendtype: 'post',
+    checked: true,
+    url: 'http://news.baidu.com/widget?id=LocalNews&ajax=json&t=1504067584738',
     param: [
-      {fda:1212},
-      {fdafa:234}
+      { key: 'id', value: 1 }
     ]
   },
   methods: {
+    add() {
+      this.param.push({ key: null, value: null });
+    },
+    remove(index) {
+      this.param.splice(index, 1);
+    },
     http() {
+
+      this.request = '';
       let param = {};
 
-      this.param.forEach((v, i) => {
-        let key = Object.keys(v)[0];
-        param[key] = v[key];
-      });
+      if (this.sendtype === 'post') {
+        this.param.forEach((v, i) => {
+
+          if (v.key && v.value) {
+            param[v.key] = v.value;
+          }
+
+        });
+      }
 
       let promise = new Promise((resolve, reject) => {
         $.ajax({
           url: this.url,
+          type: this.sendtype,
           data: param, success(data) {
             resolve(data);
 
@@ -31,10 +60,10 @@ let vue = new Vue({
         })
       });
       promise.then(res => {
-        this.color='green';
+        this.color = 'green';
         this.request = JSON.stringify(res);
       }, error => {
-        this.color='red';
+        this.color = 'red';
         this.request = JSON.stringify(error);
       })
 
