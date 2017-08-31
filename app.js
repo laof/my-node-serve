@@ -4,7 +4,6 @@ let exec = require('child_process').exec;
 let cookieParser = require('cookie-parser');
 let router = require('./serve/router');
 let filter = require('./serve/filter');
-let app = express();
 let bodyParser = require('body-parser');
 let server = require('http').Server(app);
 let webSocket = require('socket.io')(server);
@@ -25,7 +24,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }))
-
 router.forEach((v, i) => {
     let type = 'post';
     if (Object.is(v.type, 'get')) {
@@ -65,6 +63,7 @@ webSocket.on('connection', (socket) => {
     socket.emit('server send', { sisis: 23232 });
 })
 
+fs.writeFileSync(path.join(__dirname, 'src/config.json'), JSON.stringify(webConfig));
 
 console.log('>start');
 exec(`start http://127.0.0.1:${port}/index`);
