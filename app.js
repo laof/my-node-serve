@@ -6,6 +6,8 @@ let router = require('./serve/router');
 let filter = require('./serve/filter');
 let app = express();
 let bodyParser = require('body-parser');
+let server = require('http').Server(app);
+let webSocket = require('socket.io')(server);
 
 let port = 3030;
 app.use(express.static('src'));
@@ -13,14 +15,14 @@ app.use(express.static('src'));
 // app.use(express.cookieParser('sctalk admin manager'));
 // app.use(express.session());
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
 
 app.use(session({
-    secret: '12345', 
-    name: 'SESSIONID', 
-    cookie: { maxAge: 60*60*1000 }, //10分钟
-    resave: false, 
+    secret: '12345',
+    name: 'SESSIONID',
+    cookie: { maxAge: 60 * 60 * 1000 }, //10分钟
+    resave: false,
     saveUninitialized: true,
 }))
 
@@ -39,8 +41,30 @@ router.forEach((v, i) => {
 
 });
 
+server.listen(port);
+webSocket.on('connection', (socket) => {
 
 
-app.listen(port);
+    socket.on('group1',  (data) =>{
+        console.log('group1........')
+        socket.join('group1');
+    });
+
+    console.log('2121');
+    socket.on('login', (data) => {
+        console.log(data);
+    })
+    socket.on('message', (msg) => {
+        console.dir(msg);
+    });
+
+    //给除了自己以外的客户端广播消息
+    socket.broadcast.emit("server not me", { data: "hello,everyone" });
+
+    //给所有客户端广播消息
+    socket.emit('server send', { sisis: 23232 });
+})
+
+
 console.log('>start');
 exec(`start http://127.0.0.1:${port}/index`);

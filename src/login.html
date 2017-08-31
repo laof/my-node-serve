@@ -9,12 +9,15 @@
 
 <body>
   <div id="app">
-    <p>username：<input type="text" v-model:value="username" ></p>
-    <p>password：<input type="password" v-model:value="password" ></p>
+    <p>username：<input type="text" v-model:value="username"></p>
+    <p>password：<input type="password" v-model:value="password"></p>
     <a href="javascript:;" v-on:click="submit()">submit</a>
   </div>
   <script src="js/jquery3.2.1.js"></script>
   <script src="js/vue.js"></script>
+  <script src="js/socket.io.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <!-- <script src="js/socket.io.js"></script>   -->
   <script>
     let vue = new Vue({
       el: '#app',
@@ -56,6 +59,39 @@
         }
       }
     })
+    var webSocket = io.connect();
+    //let webSocket = new WebSocket('ws://127.0.0.1:3130');
+    // let webSocket = io.connect('http://localhost');
+
+    webSocket.onopen = () => {
+      console.log('链接成功');
+      webSocket.send('I am lova');
+    }
+    webSocket.onmessage = (res) => {
+      console.log(res);
+    }
+    webSocket.onclose = () => {
+      console.log('oh .. kill webSocket');
+    }
+
+    webSocket.emit('message', { message: 21212 });
+
+    webSocket.on("server not me", (e) => {
+      console.log(e);
+    });
+
+    webSocket.on('server send', (e) => {
+      console.log(e)
+    })
+
+    webSocket.emit('group1');
+
+
+    setTimeout(() => {
+      console.log(1111);
+      webSocket.emit('login', { login: 'I am LaoK' });
+    }, 2111)
+
   </script>
 </body>
 
