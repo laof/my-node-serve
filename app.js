@@ -5,6 +5,10 @@ let cookieParser = require('cookie-parser');
 let router = require('./serve/router');
 let filter = require('./serve/filter');
 let bodyParser = require('body-parser');
+let path = require('path');
+let fs = require('fs');
+let webConfig = require('./src/config.json');
+let app = express();
 let server = require('http').Server(app);
 let webSocket = require('socket.io')(server);
 
@@ -62,7 +66,8 @@ webSocket.on('connection', (socket) => {
     //给所有客户端广播消息
     socket.emit('server send', { sisis: 23232 });
 })
-
+webConfig.port=port;
+webConfig.datatime=new Date().getTime();
 fs.writeFileSync(path.join(__dirname, 'src/config.json'), JSON.stringify(webConfig));
 
 console.log('>start');
