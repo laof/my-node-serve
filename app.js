@@ -4,26 +4,27 @@ let exec = require('child_process').exec;
 let cookieParser = require('cookie-parser');
 let router = require('./serve/router');
 let filter = require('./serve/filter');
-let app = express();
 let bodyParser = require('body-parser');
-
+let webConfig = require('./src/config.json');
+let fs = require('fs');
+let path = require('path');
+let app = express();
 let port = 3030;
 app.use(express.static('src'));
 // app.use();
 // app.use(express.cookieParser('sctalk admin manager'));
 // app.use(express.session());
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
 
 app.use(session({
-    secret: '12345', 
-    name: 'SESSIONID', 
-    cookie: { maxAge: 60*60*1000 }, //10分钟
-    resave: false, 
+    secret: '12345',
+    name: 'SESSIONID',
+    cookie: { maxAge: 60 * 60 * 1000 }, //10分钟
+    resave: false,
     saveUninitialized: true,
 }))
-
 router.forEach((v, i) => {
     let type = 'post';
     if (Object.is(v.type, 'get')) {
@@ -39,7 +40,9 @@ router.forEach((v, i) => {
 
 });
 
+webConfig.port = port;
 
+fs.writeFileSync(path.join(__dirname, 'src/config.json'), JSON.stringify(webConfig));
 
 app.listen(port);
 console.log('>start');

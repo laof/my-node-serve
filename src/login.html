@@ -9,8 +9,8 @@
 
 <body>
   <div id="app">
-    <p>username：<input type="text" v-model:value="username" ></p>
-    <p>password：<input type="password" v-model:value="password" ></p>
+    <p>username：<input type="text" v-model:value="username"></p>
+    <p>password：<input type="password" v-model:value="password"></p>
     <a href="javascript:;" v-on:click="submit()">submit</a>
   </div>
   <script src="js/jquery3.2.1.js"></script>
@@ -56,6 +56,30 @@
         }
       }
     })
+
+
+// 创建一个Socket实例
+var socket = new WebSocket('ws://localhost:3030'); 
+
+// 打开Socket 
+socket.onopen = function(event) { 
+
+  // 发送一个初始化消息
+  socket.send('I am the client and I\'m listening!'); 
+
+  // 监听消息
+  socket.onmessage = function(event) { 
+    console.log('Client received a message',event); 
+  }; 
+
+  // 监听Socket的关闭
+  socket.onclose = function(event) { 
+    console.log('Client notified socket has closed',event); 
+  }; 
+
+  // 关闭Socket.... 
+  //socket.close() 
+};
   </script>
 </body>
 
