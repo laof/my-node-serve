@@ -27,22 +27,22 @@ app.use(session({
     name: 'SESSIONID',
     cookie: { maxAge: 60 * 60 * 1000 }, //10分钟
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: true
 }))
-router.forEach((v, i) => {
-    let type = 'post';
-    if (Object.is(v.type, 'get')) {
-        type = 'get';
-    } else {
+// router.forEach((v, i) => {
+//     let type = 'post';
+//     if (Object.is(v.type, 'get')) {
+//         type = 'get';
+//     } else {
 
-    }
-    if (v.isLogin) {
-        app[type](v.api, filter.login, v.http);
-    } else {
-        app[type](v.api, v.http);
-    }
+//     }
+//     if (v.isLogin) {
+//         app[type](v.api, filter.login, v.http);
+//     } else {
+//         app[type](v.api, v.http);
+//     }
 
-});
+// });
 
 
 webConfig.port = port;
