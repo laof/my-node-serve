@@ -1,4 +1,4 @@
-module.exports.login = (req, res, next) => {
+module.exports = (req, res, next) => {
     if (!req.session.userId) {
         
         if(req.headers['x-requested-with']==='XMLHttpRequest'){

@@ -1,4 +1,4 @@
-exports.create = (webSocket) => {
+module.exports = (webSocket) => {
 
     webSocket.on('connection', (socket) => {
 
