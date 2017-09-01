@@ -10,6 +10,7 @@ let app = express();
 let server = require('http').Server(app);
 let webSocket = require('socket.io')(server);
 let port = 3030;
+
 colors.setTheme({
     silly: 'rainbow',
     input: 'grey',
@@ -22,6 +23,9 @@ colors.setTheme({
     debug: 'blue',
     error: 'red'
   });
+
+  require('./serve/crawler');
+  return;
 
 app.use(session({
     secret: '12345',
@@ -36,11 +40,7 @@ require('./serve/socket.io')(webSocket);
 require('./serve/setting')();
 require('./serve/router')(app);
 
-require('./serve/crawler')({
-    body: {
-        url: 'http://www.bootcdn.cn/all'
-    }
-})
+
 
 
 app.use(express.static('src'));
@@ -53,6 +53,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
 
 
-//exec(`start http://127.0.0.1:${port}/index`);
+exec(`start http://127.0.0.1:${port}/index`);
 
 console.log(" start ".info);
