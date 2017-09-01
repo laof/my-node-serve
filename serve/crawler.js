@@ -7,15 +7,15 @@ class Http {
 
         let url = req.body.url; console.log('url++++++' + url);
         let promise = new Promise((resolve, reject) => {
+
             return http.get(url, res => {
                 let html = '';
-                console.log('start p ..'.info);
                 res.on('data', (chunk) => {
-                    console.log('p++ .....'.info);
                     html += chunk;
+                    console.log('................'.data);
                 })
                 res.on('end', res => {
-                    console.log('wanc'.error);
+                    console.log('完成..'.error);
                     resolve(html);
                 })
 
@@ -26,7 +26,7 @@ class Http {
 
         promise.then(data => {
             let list = [];
-            let $ = cheerio.load(data);
+            let $ = cheerio.load(data);console.log(data.warn);
 
             $('#common-packages .list-group-item').each((i, v) => {
                 list.push({
@@ -35,7 +35,6 @@ class Http {
                 });
             })
 
-            console.log(list.data);
         }, error => {
             console.log(error.error);
         })
@@ -46,7 +45,7 @@ class Http {
 
 new Http().http({
     body: {
-        url: 'http://www.bootcdn.cn/all'
+        url: 'http://www.jd.com'
     }
 })
 
