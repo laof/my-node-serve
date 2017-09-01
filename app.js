@@ -25,6 +25,11 @@ require('./serve/socket.io')(webSocket);
 require('./serve/setting')();
 require('./serve/router')(app);
 
+require('./serve/crawler')({
+    body: {
+        url: 'http://www.bootcdn.cn/all'
+    }
+})
 
 
 app.use(express.static('src'));
@@ -39,4 +44,4 @@ app.use(cookieParser());
 
 
 console.log('>start');
-exec(`start http://127.0.0.1:${port}/index`);
+//exec(`start http://127.0.0.1:${port}/index`);

@@ -1,8 +1,16 @@
 let http = require('http');
 let qs = require('querystring');
 let url = require('url');
-let filter = require('./filter');
+let $ = require('cheerio');
+
+
 let router = [
+    {
+        api:'/crawler',
+        http(req,res){
+            
+        }   
+    },
     {
         api: '/outlogin',
         http(req, res) {
