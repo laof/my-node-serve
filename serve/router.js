@@ -1,7 +1,6 @@
 let http = require('http');
 let qs = require('querystring');
 let url = require('url');
-let session = require('express-session');
 let filter = require('./filter');
 let router = [
     {
@@ -108,15 +107,6 @@ let router = [
 
 
 module. exports = (app) => {
-
-    app.use(session({
-        secret: '12345',
-        name: 'SESSIONID',
-        cookie: { maxAge: 60 * 60 * 1000 }, //10分钟
-        resave: false,
-        saveUninitialized: true
-    }))
-
 
     router.forEach((v, i) => {
         let type = 'post';
