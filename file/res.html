@@ -1,0 +1,895 @@
+<!DOCTYPE html>           
+
+<script>
+    (function (context) {
+        var data = {};
+        var url = '//imgstat.baidu.com/17.gif';
+        var start = +new Date;
+        var createQuery = function (data) {
+            var ret = [];
+            for (var key in data) {
+                ret.push(key + '=' + data[key]);
+            }
+            return ret.join('&');
+        };
+
+        var _mergeCommPara = function (data) {
+            data.etype = 'speed';
+            data.page = 'result';
+            data.logid = "12760819722846020264";
+            data.sid = '17f959da9703d73bbcb6244cd5e82212a73bdb4f';
+            data.wh = window.screen.width + 'x' + window.screen.height ;
+            data.sampid = '-1';
+            data.app = 'searchresult';
+            data.spat = 0 + '-' + '';
+            data.protocol = window.location.protocol.replace(':', '');
+            if ('0' - 0) {
+                data.ishttps = '0';
+            }
+            
+            data.sync = "";
+            return data;
+        };
+        var _profiles = {
+            'slider': {
+                _url: '//imgstat.baidu.com/17.gif',
+                etype: 'slide'
+            }
+        };
+        var speed = {
+            set: function (key, value) {
+                if (key) {
+                    data[key] = value || 0;
+                }
+            },
+            get: function (key) {
+                return data[key] || ('start' === key && start);
+            },
+            mark: function (key, value, ts) {
+                if (undefined === value) {
+                    value = new Date - start;
+                }
+                if (true === ts) {
+                    value = value - start;
+                }
+                data[key] = value;
+            },
+            send: function (ext) {
+                if (ext) {
+                    for (var key in ext) {
+                        data[key] = ext[key];
+                    }
+                }
+                _mergeCommPara(data);
+                var queryString = createQuery(data);
+                new Image().src = url + '?' + queryString;
+            },
+            loadmark: function () {
+                value = new Date - start;
+
+                if (speed.firstScCount) {
+                    speed.firstScCount += 1;
+                }else{
+                    speed.firstScCount = 1;
+                }
+
+                data['firstSc'] = value;
+
+            },
+            log: function (profile, data) {
+                var queryString = createQuery(data);
+                var pf = _profiles[profile];
+                var a = [];
+
+                _mergeCommPara(data);
+                for (var p in pf) {
+                    if (p.indexOf('_') !== 0) {
+                        data[p] = pf[p];
+                    }
+
+                }
+                for (var p in data) {
+                    a.push(p + '=' + data[p]);
+                }
+
+
+                (new Image).src = pf._url + '?' + a.join('&');
+            }
+        };
+        context.speed = speed;
+        speed.firstScCount = 0;
+        (function () {
+            window.logid = "12760819722846020264";
+            loaded = 0;
+            var addWindowEvent = window.addEventListener ?
+                function(type, fn) { window.addEventListener(type, fn, false); } :
+                function(type, fn) { window.attachEvent('on' + type, fn); };
+            addWindowEvent('beforeunload', function () {
+                if (!loaded) {
+                    speed.mark('leave');
+                    speed.send();
+                }
+            });
+
+            addWindowEvent('load', function () {
+                loaded = 1;
+            });
+        })();
+    })(window);
+</script>
+<script>
+    // ala进入打点
+    try {
+        if (!window._alaEnter) {
+            window._alaEnter = true;
+            function query2Json(query) {
+                var json = {};
+                var search = query.split("&");
+                for (var i = search.length - 1; i >= 0; i--) {
+                    var s = search[i].split('=');
+                    json[s[0]] = s[1];
+                }
+                return json;
+            }
+            var query = query2Json((location.search || '').replace('?', ''));
+            if (+query.hs && query.tn === 'baiduimage') {
+                var payload = 'dsp=pc&tn=result&hs=' + query.hs;
+                (new Image()).src = '//image.baidu.com/pv/pv.gif?' + payload + '&type=enter&t=' + (+new Date);
+                window._alaEnter = function (type) {
+                    (new Image()).src = '//image.baidu.com/pv/pv.gif?' + payload
+                        + '&type=' + type + '&t=' + (+new Date);
+                };
+                var sid = "c3437dbc7c1255d3a21d444d86ebf2e9234c22bd";
+                if (window.localStorage
+                    && window.localStorage.sid
+                    && window.localStorage.sid !== sid) {
+                    window._alaEnter('change');
+                }
+                window.localStorage.sid = sid;
+            }
+        }
+    } catch(e) {}
+</script>
+   <html>   <!--STATUS OK-->  <head>  
+<meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<noscript>
+<meta http-equiv="refresh" content="0;url=/i?ct=201326592&lm=-1&tn=baiduimagenojs&ipn=rnj&pv=&word=%E9%A3%8E%E6%99%AF&z=0&pn=0&rn=20&cl=2&ie=utf-8">
+
+<style>table,.p{display:none}</style>
+
+</noscript>
+ <title>
+风景_百度图片搜索</title>  <script>
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>     
+   <script>
+        var Ihttps_agent_config = {"http:\/\/nssug.baidu.com":"https:\/\/sp1.baidu.com\/8qUZeT8a2gU2pMbgoY3K\/su","http:\/\/img.baidu.com":"https:\/\/gss2.bdstatic.com\/70cFsjip0QIZ8tyhnq","http:\/\/himg.bdimg.com":"https:\/\/ss1.bdstatic.com\/7Ls0a8Sm1A5BphGlnYG","http:\/\/apps.bdimg.com":"https:\/\/ss0.bdstatic.com\/9_QWf8Sm1A5BphGlnYG","http:\/\/f3.baidu.com":"https:\/\/sp3.baidu.com\/-uV1bjeh1BF3odCf","http:\/\/bzclk.baidu.com":"https:\/\/gsp0.baidu.com\/9q9JcDHa2gU2pMbgoY3K","http:\/\/img0.imgtn.bdimg.com":"https:\/\/ss0.bdstatic.com\/70cFvHSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img1.imgtn.bdimg.com":"https:\/\/ss1.bdstatic.com\/70cFvXSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img2.imgtn.bdimg.com":"https:\/\/ss2.bdstatic.com\/70cFvnSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img3.imgtn.bdimg.com":"https:\/\/ss3.bdstatic.com\/70cFv8Sh_Q1YnxGkpoWK1HF6hhy","http:\/\/img4.imgtn.bdimg.com":"https:\/\/ss0.bdstatic.com\/70cFuHSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img5.imgtn.bdimg.com":"https:\/\/ss1.bdstatic.com\/70cFuXSh_Q1YnxGkpoWK1HF6hhy","http:\/\/bdimg.share.baidu.com":"https:\/\/gss0.baidu.com\/9rA4cT8aBw9FktbgoI7O1ygwehsv","http:\/\/dispatcher.video.qiyi.com":"https:\/\/gss0.bdstatic.com\/-LsZfDe52w9JkxG9m9iS_HFjgAkrreHg-_","http:\/\/passport.bdimg.com":"https:\/\/ss0.bdstatic.com\/5LMZfyabBhJ3otebn9fN2DJv"};
+    </script> <script type="text/javascript" src="//img0.bdstatic.com/static/common/mod_6f6741d.js"></script> 
+<script>
+    //记录页面开始时间, 也用于vs埋点
+    window.pageStartTime = (new Date()).getTime();
+    window.shootBannerData = [];
+    window.isBigFu = '';
+   // window.scrollTo(0, 0);
+</script>
+
+<script>
+    // 时效性热点
+        </script>
+ <link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/common/pkg/co_e30f6c9.css"/><link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/searchresult/pkg/result_4aea687.css"/><link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/common/widget/ui/slider/slider_ecce195.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/common/widget/ui/userInfo/userInfo_5bd6198.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvFilterView/AvFilterView_5709328.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvMuiltSizeFilterView/AvMuiltSizeFilterView_5a57aa1.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvTypeFilterView/AvTypeFilterView_cea6b92.css"/><link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/searchresult/widget/ui/base/view/AvColorWallFilterView/AvColorWallFilterView_cf8a646.css"/><link rel="stylesheet" type="text/css" href="//img2.bdstatic.com/static/searchresult/widget/ui/base/view/AvColorFilterView/AvColorFilterView_5b1da63.css"/><link rel="stylesheet" type="text/css" href="//img2.bdstatic.com/static/common/widget/loginbar/loginbar_e8a6507.css"/></head>  <script> alog('speed.set', 'ht', +new Date); </script>  <body class=""> <script type="text/javascript">require.siteNS && require.siteNS(["searchresult", "common"]);require.resourceMap({"res":{"searchresult:widget/ui/app/noResultPage.js":{"url":"//img0.bdstatic.com/static/searchresult/widget/ui/app/noResultPage_ee2374d.js","deps":["common:widget/ui/base/base.js","searchresult:widget/ui/controls/relsearchBox/relsearchBox.js","common:widget/ui/userInfo/userInfo.js","searchresult:widget/ui/controls/hotwordBox/hotwordBox.js","searchresult:widget/ui/controls/suggBox/suggBox.js","searchresult:widget/ui/statistic/statistic.js"]},"common:widget/shitu/static/animate.js":{"url":"//img1.bdstatic.com/static/common/widget/shitu/static/animate_e65390e.js","deps":["common:widget/ui/base/base.js"]},"common:widget/shitu/run.js":{"url":"//img0.bdstatic.com/static/common/widget/shitu/run_eb8aed7.js","deps":["common:widget/ui/base/base.js","common:widget/ui/utils/utils.js","common:widget/shitu/static/animate.js"]},"common:widget/ui/historyRecord/historyRecord.js":{"url":"//img2.bdstatic.com/static/common/widget/ui/historyRecord/historyRecord_31e31e1.js","deps":["common:widget/ui/base/base.js","common:widget/ui/base/events.js"]},"common:widget/ui/loginBox/loginBox.js":{"url":"//img0.bdstatic.com/static/common/widget/ui/loginBox/loginBox_ea459f5.js"},"common:widget/loginbar/loginbar.js":{"url":"//img2.bdstatic.com/static/common/widget/loginbar/loginbar_f08c999.js","deps":["common:widget/ui/base/base.js","common:widget/ui/loginBox/loginBox.js","common:widget/ui/base/EventDispatcher.js"]},"common:widget/ui/sourcehttps/sourcehttps.js":{"url":"//img1.bdstatic.com/static/common/widget/ui/sourcehttps/sourcehttps_a8b93d5.js"},"common:widget/ui/fmCheck/fmCheck.js":{"url":"//img1.bdstatic.com/static/common/widget/ui/fmCheck/fmCheck_e6197fc.js","deps":["common:widget/ui/base/base.js"]},"common:widget/ui/durationStat/durationStat.js":{"url":"//img0.bdstatic.com/static/common/widget/ui/durationStat/durationStat_d292e9f.js","deps":["common:widget/ui/utils/utils.js","common:widget/ui/base/base.js"]}}});</script> 
+
+<div id="search" class="">
+<script>
+        (function() {
+            var search = document.getElementById('search');
+            var width = window.innerWidth
+                || (document.documentElement && document.documentElement.clientWidth)
+                || (document.body && document.body.clientWidth);
+            if (search && width < 1217) {
+                search.className = 'narrow ' + search.className;
+            }
+        })();
+    </script>
+<div class="s_search">
+<a href="/" class="s_logo">
+<img src="//img0.bdstatic.com/static/searchresult/img/logo-2X_b99594a.png" alt="到 百度图片首页 来" title="返回 百度图片首页">
+</a>
+<div class="s_nav">
+<form action="/search/index" class="searchform" name="f1" onsubmit="return s_submit(this,true)">
+<input type="hidden" name="tn" value="baiduimage">
+<input type="hidden" name="ipn" value="r">
+<input name="ct" type="hidden" value="201326592">
+<input name="cl" type="hidden" value="2">
+<input name="lm" type="hidden" value="-1">
+<input name="st" type="hidden" value="-1">
+<input name="fm" type="hidden" value="result">
+<input name="fr" type="hidden" value="">
+<input name="sf" type="hidden" value="1">
+<input name="fmq" type="hidden" value="">
+<input name="pv" type="hidden" value="">
+<input name="ic" type="hidden" value="0">
+<input name="nc" type="hidden" value="1">
+<input name="z" type="hidden" value="">
+<input name="se" type="hidden" value="">
+<input name="showtab" type="hidden" value="0">
+<input name="fb" type="hidden" value="0">
+<input name="width" type="hidden" value="">
+<input name="height" type="hidden" value="">
+<input name="face" type="hidden" value="0">
+<input name="istype" type="hidden" value="2">
+<input name="ie" type="hidden" value="utf-8">
+<input name="ctd" type="hidden" value="">
+<span class="s_ipt_wr"><input id="kw" name="word" class="s_ipt" value="风景" autocomplete="off" onfocus="this.parentNode.className='s_ipt_wr active'" onblur="this.parentNode.className='s_ipt_wr'"/></span><span class="s_btn_wr"><input type="submit" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"  value="百度一下"   /></span>
+</form><div id="stcontent" class="common-shitu"> <a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" title="上传图片，搜索相关信息"> <img class="st_camera_off" src="//img1.bdstatic.com/static/common/widget/shitu/images/camera_new_off_a552294.png" width="20" height="20"> <img class="st_camera_on" src="//img2.bdstatic.com/static/common/widget/shitu/images/camera_new_on_4e3e250.png" width="20" height="20"> <div class="st_tips" id="stTipsBox">上传图片，搜索相关信息</div> <div class="st_tips_arrow_in" id="stTipArrowIn"></div> <div class="st_tips_arrow_out" id="stTipArrowOut"></div> </a> <div id="stsug" class="stsug" style="display:none"> <div id="sthead"><span>识图</span><img id="sthelp" width="13" height="13" src="//img2.bdstatic.com/static/common/widget/shitu/images/mark_b68ff2e.png" /></div> <div class="stf"> <form id="form2" target="_self" enctype="multipart/form-data" name="form2"> <a id="uploadImg" href="javascript:void(0)" data-nsclick="p=1811102&tn=index&event_type=shitu.search.click&pos=upload">本地上传<input type="file" name="file" id="stfile" size="2"></a> <div class="st_dragtg" id="dragtg" style="display:none;">提示：您也可以把图片拖到这里</div> <input id="shitu2" name="pos" value="" type="hidden"> <input name="uptype" value="upload_pc" type="hidden"> <input name="fm" value="index" type="hidden"> </form> <form id="form1" target="_self" enctype="multipart/form-data" method="get" name="form1"> <div id="sturl"> <span class="stuwr"> <input type="text" id="stuurl" placeholder="在此处粘贴图片网址" value="" autocomplete="off"  class="stuurl" name="objurl"> </span> <span class="stsb"> <input type="submit" id="sbobj" class="stsb2" onmousedown="this.className='stsb2 stsb3'" onmouseout="this.className='stsb2'" onmouseover="this.className='stsb2 stsb4'" value="识图一下"> </span> </div> <input name="filename" id="filename" value="" type="hidden"> <input name="rt" value="0" type="hidden"> <input name="rn" value="10" type="hidden"> <input id="stftn" name="ftn" value="wantu" type="hidden"> <input name="ct" value="1" type="hidden"> <input name="stt" value="0" type="hidden"> <input name="tn" value="shituresultpc" type="hidden"> <input id="shitu1" name="uptype" value="paste" type="hidden"> <input name="fm" value="index" type="hidden"> </form> </div> <div class="drag-text-tip" id="dttip">拖拽图片到此处试试</div> <div id="stmore" style="display:none;"> <div class="stmore-header">百度识图</div> <ul> <li>识别人物、搜索服饰、寻找高清素材、浏览相似美图，尽在百度识图!</li> </ul> <div class="stmore_arrow_in"></div> <div class="stmore_arrow_out"></div> </div> <a id="closest" href="javascript:void(0);" title="关闭"></a> <div id="point" style="display:none;"> <img src="//img1.bdstatic.com/img/image/shitu/feimg/uploading.gif" /><span>正在识别中，请稍候...</span> <a id="cancelst" href="javascript:void(0);" title="取消"></a> </div> <div class="undrag-text-tip" id="undragtip"> <p>抱歉，Safari不支持拖拽识图。<br/> 请保存图片到本地，通过本地上传或在搜索框粘贴图片url进行识图。</p> </div> <div id="dragtip" style="display:none;"> <span>请拖拽图片到此处</span> <div class="drag_dot_area drag_dot_left_top"></div> <div class="drag_dot_area drag_dot_left_bottom"></div> <div class="drag_dot_area drag_dot_right_top"></div> <div class="drag_dot_area drag_dot_right_bottom"></div> <a id="cancelst" href="javascript:void(0);" title="取消"></a> </div> <div class="left-border"></div> <div class="right-border"></div> </div> <div id="mock-stsug"></div> </div>  </div>
+<div id="imgfilter">
+<a id="imgfilter-btn" class="filter-open" href="javascript:;">
+<span class="imgfilter-text">图片筛选</span>
+<span class="imgfilter-arrow"></span>
+</a>
+<div id="filter-holder" style="display:none">
+<span class="holder-arrow"></span>
+<div id="top-filter-hoder">
+<div id="filter-container">
+<div class="filter" id="filter">
+<div id="sizeFilter" class="subFilter sizeFilter"></div>
+<div id="colorFilter" class="subFilter"></div>
+<div id="typeFilter" class="subFilter"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='userInfo'>
+<a target='_blank' href='http://www.baidu.com/'>百度首页</a>
+</div>
+</div>
+<script>
+var commonHeaderConf = {
+	sugProdName: "image",
+	searchInputId: "kw"
+};
+void function(w){
+	window.setHeadUrl= function(o){
+		var links = {
+		i_news:['word','http://news.baidu.com/ns?tn=news&cl=2&rn=20&ct=1&ie=utf-8',1],
+        i_webpage:['wd','https://www.baidu.com/s?ie=utf-8',1],
+		i_tieba:['kw','http://tieba.baidu.com/f?ie=utf-8',1],
+		i_zhidao:['word','http://zhidao.baidu.com/q?ct=17&pn=0&tn=ikaslist&rn=10&lm=0&ie=utf-8',1],
+		i_mp3:['key','http://music.baidu.com/search?fr=img&ie=utf-8',1],
+		i_video:['word','http://v.baidu.com/v?ct=301989888&s=25&ie=utf-8',1],
+		i_map:['wd','http://map.baidu.com/?newmap=1&ie=utf-8&s=s',2],
+		i_baike:['word','http://baike.baidu.com/search/word?pic=1&sug=1&enc=utf8',1],
+		i_wenku:['word','http://wenku.baidu.com/search?ie=utf-8',1]
+		},
+		name = o.name,
+		items = links[name],
+		kw = document.getElementById(w),
+		reg = new RegExp('^\\s+|\\s+\x24'),
+		key = kw.value.replace(reg,'');
+		if(items){
+			if(key.length > 0){
+				var wd = items[0],
+					url = items[1],
+					proSign = items[2];
+				url = pro(url,wd,key,proSign);
+				o.href = url;
+
+			}else{
+				o.href = o.href.match(new RegExp('^http:\/\/.+\\.baidu\\.com'))[0];
+			}
+            if(!o.clickHandle){
+                o.onclick = function(e){
+                    if(typeof p === 'function'){
+                        e = e || window.event;
+                        p(e, 52, {isAsyn : true, to : this.name, href : this.href});
+                    }
+
+                };
+                o.clickHandle = true;
+            }
+		}
+		function pro(url,wd,key,proSign){
+			/*日文片假部分乱码\u30f7--\u30fb,转换成实体*/
+			function HtmlEncodeAndComponent(inTXT){
+				/*地图，uri编码，不转换成实体*/
+				if(proSign==2){
+					return encodeURIComponent(key);
+				}
+				var hexArray =[],entityCode = '',finalKey = '', character='',tmpInt=0;
+				for(i=0; i<inTXT.length; i++){
+					character = inTXT.charCodeAt(i).toString(16).toUpperCase();
+					tmpInt = parseInt(character,16);
+					if(tmpInt>=0x30f7&&tmpInt<=0x30fb){
+						decCode = tmpInt.toString(10);
+						entityCode = '&#'+decCode+';';
+						finalKey += encodeURIComponent(entityCode);
+
+					}else{
+						entityCode = inTXT.charAt(i);
+						if(proSign>0){
+							finalKey += encodeURIComponent(entityCode);
+						}else{
+							finalKey += entityCode;
+						}
+					}
+				}
+				return finalKey;
+			}
+			var prefix = (url.indexOf('?')>0?'&':'?') + wd +'=';
+			if(proSign == 2){
+				prefix = encodeURIComponent(prefix);
+			}
+			key = HtmlEncodeAndComponent(key);
+			return url + prefix + key;
+		}
+	}
+}(commonHeaderConf.searchInputId);
+</script>
+<div class="s_tab">
+<a href="https://www.baidu.com/"  onmousedown="setHeadUrl(this)" name="i_webpage" >网页</a>
+<a href="http://news.baidu.com/" onmousedown="setHeadUrl(this)" name="i_news">新闻</a>
+<a href="http://tieba.baidu.com/" onmousedown="setHeadUrl(this)" name="i_tieba">贴吧</a>
+<a href="http://zhidao.baidu.com/" onmousedown="setHeadUrl(this)" name="i_zhidao" >知道</a>
+<a href="http://music.baidu.com/" onmousedown="setHeadUrl(this)" name="i_mp3" class="eng">音乐</a>
+<b>图片</b>
+<a href="http://v.baidu.com/" onmousedown="setHeadUrl(this)" name="i_video" >视频</a>
+<a href="http://map.baidu.com/" onmousedown="setHeadUrl(this)" name="i_map" >地图</a>
+<a href="http://wenku.baidu.com/" onmousedown="setHeadUrl(this)" name="i_wenku">文库</a>
+<a href="https://www.baidu.com/more/" onmousedown="setHeadUrl(this)" name="i_more">更多»</a>
+</div>
+<div id="topInfoBar">
+<div id="topRS">
+<em class="pull-rs-title">相关搜索：</em><a class="pull-rs" title="查看 风景大图片"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E9%A3%8E%E6%99%AF%E5%A4%A7%E5%9B%BE%E7%89%87&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">风景大图片</a><a class="pull-rs" title="查看 乡村田园风景油画"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E4%B9%A1%E6%9D%91%E7%94%B0%E5%9B%AD%E9%A3%8E%E6%99%AF%E6%B2%B9%E7%94%BB&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">乡村田园风景油画</a><a class="pull-rs" title="查看 美得让人窒息的风景"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%BE%8E%E5%BE%97%E8%AE%A9%E4%BA%BA%E7%AA%92%E6%81%AF%E7%9A%84%E9%A3%8E%E6%99%AF&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">美得让人窒息的风景</a><a class="pull-rs" title="查看 风景简笔画图片大全"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E9%A3%8E%E6%99%AF%E7%AE%80%E7%AC%94%E7%94%BB%E5%9B%BE%E7%89%87%E5%A4%A7%E5%85%A8&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">风景简笔画图片大全</a><a class="pull-rs" title="查看 夏天风景"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E5%A4%8F%E5%A4%A9%E9%A3%8E%E6%99%AF&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">夏天风景</a><a class="pull-rs" title="查看 丽江风景"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E4%B8%BD%E6%B1%9F%E9%A3%8E%E6%99%AF&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">丽江风景</a><a class="pull-rs" title="查看 风景电脑壁纸"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E9%A3%8E%E6%99%AF%E7%94%B5%E8%84%91%E5%A3%81%E7%BA%B8&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">风景电脑壁纸</a><a class="pull-rs" title="查看 风景海报"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E9%A3%8E%E6%99%AF%E6%B5%B7%E6%8A%A5&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">风景海报</a><a class="pull-rs" title="查看 深圳风景"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B7%B1%E5%9C%B3%E9%A3%8E%E6%99%AF&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">深圳风景</a><a class="pull-rs" title="查看 意境唯美小清新风景"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%84%8F%E5%A2%83%E5%94%AF%E7%BE%8E%E5%B0%8F%E6%B8%85%E6%96%B0%E9%A3%8E%E6%99%AF&hs=0&oriquery=%25E9%25A3%258E%25E6%2599%25AF&ofr=%25E9%25A3%258E%25E6%2599%25AF&sensitive=0">意境唯美小清新风景</a></div>
+<div id="timeliness" class="hotpot-container">
+</div>
+<script type="text/juicer" id="timeliness-tpl">
+    <div id="timeliness-bless">
+        <div class="blessing-img-wrapper">
+            <img class="blessing-img" src="${icon.normal}" alt="" />
+            <img class="blessing-img icon-zoomup" src="${icon.normal}" alt="" />
+        </div>
+        <span class="blessing-content">
+            ${title}
+        </span>
+        <div class="blessing-count-wrapper">
+            (<span class="blessing-count"></span>人)
+        </div>
+    </div>
+    <div class="egg">
+        <img class="blessing-img-egg" src="${egg}" alt="" />
+    </div>
+</script>
+</div>
+<div id="specialQuery"></div>
+<div id="browser-hotword"></div>
+
+</div>
+ 
+
+<script>
+    window.vsid = '2bce98fe93b9f3df1eff7876478138eb7975973c';
+</script>
+<div id="wrapper">
+<div id="pnlBeforeContent">
+<div class="news-slider"></div>
+<div id="smeContainer" style="display:none;">
+</div>
+</div>
+<div id="imgContainer" class="">
+<div id="timeliness-title">
+<img class="blessing-img guideIcon" src="">
+<span class="timeliness-desc"></span>
+</div>
+<div id="pnlBeforeImgList">
+<div class="memory-con" id="memoryBar" style="display: none;">您收藏时已经看到第<span class="memory-page">10</span>页，<span><a class="memory-link">点击直达</a></span><a class="memory-close"></a></div>
+</div>
+<div id="specialRecommend"></div>
+
+<div id="imgid">
+</div>
+<div id="lastPage" style="position:relative;overflow:hidden;padding-left:50px;zoom:1;display:none;">
+为给您提供最相关的图片结果，百度已省略与以上结果相类似的图片，您可<a href="/">点此查看更多搜索结果</a>。</div>
+<div id="ajaxInfo"></div>
+<div id="noPage" >
+<div id="dataNone" style="margin:0 0 0 15px;font-size:14px;line-height:20px;">
+抱歉，在该筛选条件下，没有找到与<font color="#C60A00">风景</font>相关的图片。</div>
+<div id="stdNone" style="margin:0 0 0 15px;font-size:14px;line-height:20px;">
+<br>
+<br>
+<font class="fB" style="font-size:14px">百度建议您：</font>
+<div style="font-size:14px;margin-top:0px;">
+<li id="listSetDefault">将筛选功能<a href="/search/index?ct=201326592&z=&s=&tn=baiduimage&ipn=r&word=%E9%A3%8E%E6%99%AF&ie=utf-8&oe=utf-8&lm=-1&st=-1&z=&se=0&fr=&pn=0&width=&height=&face=0&ct=503316480" onclick="" >恢复默认状态</a></li>
+<li>修改当前的筛选条件</li>
+<li >看看输入的文字是否有误</li>
+</div>
+<div id=DivPost style="margin-top:0px;margin-left:15px;"></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<p href="javascript:void(0);" id="loading"><img style="width:50px;height:54px;"/></p>
+<div id="pageMoreWrap">
+<a href="javascript:void(0);" onmousedown="p(null,499,{domid:'pageMore',type:'click'})" id="pageMore">加载更多图片</a>
+<div id="resultInfo">找到相关图片约1,420,000张</div>
+</div><div id="pnlAfterContent" style="display:none">
+<div id="cmsimage">
+<div id="hotWordDiv"></div>
+</div>
+<div id="relecom54">
+</div>
+</div>
+</div>
+<div id="loginbar" style="display:none;"> <div class="loginbar-inner"> <div class="login-png"></div> <a class="baidulogin" href="javascript:;">百度账号登陆</a> <span>或</span> <a class="baidureg" href="javascript:void(0);">注册</a> </div> <a class="loginbar-close" href="javascript:;">关闭</a> </div>  <script>
+    window.alogObjectConfig = {
+        product: '11',
+        page: '2', 
+        speed_page: '2',  
+ 
+        speed: {
+            sample: '0.01'   
+        },
+ 
+       
+        monkey: {
+            sample: '0.01'   
+        },
+ 
+        exception: { 
+            sample: '0.01' 
+        },
+ 
+        feature: {
+            sample: '0.01'
+        },
+ 
+        
+        cus: {
+            sample: '0.01' 
+        },
+ 
+        csp: {
+            sample: '0.01',
+            'default-src': [
+                {match: '*bae.baidu.com', target: 'Accept,Warn'},
+                {match: '*.baidu.com,*.bdstatic.com,*.bdimg.com,localhost,*.hao123.com,*.hao123img.com', target: 'Accept'},
+                {match: /^(127|172|192|10)(\.\d+){3}$/, target: 'Accept'},
+                {match: '*', target: 'Accept,Warn'}
+            ]
+        }
+    };
+ 
+    // pc和mobile端会稍有不同，必须严格按照该文档来部署，该段代码必须放在上面的window.alogObjectConfig配置之后
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>  <script>
+    void function(e,t){for(var n=t.getElementsByTagName("img"),a=+new Date,i=[],o=function(){this.removeEventListener&&this.removeEventListener("load",o,!1),i.push({img:this,time:+new Date})},s=0;s< n.length;s++)!function(){var e=n[s];e.addEventListener?!e.complete&&e.addEventListener("load",o,!1):e.attachEvent&&e.attachEvent("onreadystatechange",function(){"complete"==e.readyState&&o.call(e,o)})}();alog("speed.set",{fsItems:i,fs:a})}(window,document);
+</script> 
+<a id="backTop" href="javascript:;" data-title="返回顶部"><div class="btn-inner-text"></div></a>
+<a href="javascript:;" id="report_link" data-title="反馈图片"><div class="btn-inner-text">反馈</div></a>
+ 
+<script>
+    (function () {
+        var pos = '';
+        if (pos == 1) {
+            pos = '-title';
+        } else if (pos == 3) {
+            pos = '-more';
+        } else {
+            pos = '';
+        }
+
+        document.addEventListener && document.addEventListener('DOMContentLoaded', function () {
+
+            var net = 0;
+            var isPreLoaded = 0;
+            var start = speed.get('start');
+
+            if(window.performance){
+                net = window.performance.timing.navigationStart;
+            }
+            net && speed.mark('net', start - net);
+            speed.mark('preloaded', isPreLoaded);
+            speed.mark('domc');
+            // 针对chrome细分数据
+            if (window.performance && window.performance.timing) {
+                var timing = window.performance.timing;
+                // tcp connct时间
+                speed.mark('dnst', timing.domainLookupEnd - timing.domainLookupStart);
+                // dns解析时间
+                speed.mark('cot', timing.connectEnd - timing.connectStart);
+                // 首字节返回时间点
+                speed.mark('rpnt', timing.responseStart);
+                if (net) {
+                    // tc跳板时间
+                    speed.mark('tct', timing.navigationStart - net);
+                    // 网络开始时间点
+                    speed.mark('nets', net);
+                }
+                speed.mark('connectStart', timing.connectStart);
+            }
+        }, false);
+
+        var addWindowEvent = window.addEventListener ?
+            function(type, fn) { window.addEventListener(type, fn, false); } :
+            function(type, fn) { window.attachEvent('on' + type, fn); };
+        addWindowEvent('load', function () {
+            var url = location.href;
+            url = url.replace(/&ctd=([^&]+)/, '');
+            if (url) {
+                window.history && window.history.replaceState && window.history.replaceState(null, "", url + '');
+            }
+
+            speed.mark('load');
+            LazySend();
+        });
+
+        function LazySend() {
+            if (speed.firstScCount >= 5) {
+                speed.mark('frm', '');
+                speed.send();
+            } else {
+                setTimeout(LazySend, 1000);
+            }
+        }
+    })();
+</script>
+<script>
+    (function () {
+        if (window._alaEnter && window._alaEnter !== true) {
+            window._alaEnter('end');
+            var oldOnerror = window.onerror;
+            window.onerror = function (msg, source, lineno, colno) {
+                try {
+                    oldOnerror && oldOnerror.apply(window, arguments);
+                    var str = 'error&source=' + source + '&msg=' + msg + '&ln=' + lineno + '&cn=' + colno;
+                    window._alaEnter(str);
+                } catch (e) {}
+            };
+        }
+    })();
+</script>
+<script>
+    </script>
+                    <script>
+    void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d,k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+</script>   </body><script type="text/javascript"  src="//img0.bdstatic.com/static/common/widget/ui/base/base_a66ce51.js" ></script>
+<script type="text/javascript"  src="//img0.bdstatic.com/static/common/pkg/cores_2210f76.js" ></script>
+<script type="text/javascript"  src="//img1.bdstatic.com/static/common/widget/ui/juicer/juicer_59c3d50.js" ></script>
+<script type="text/javascript"  src="//img1.bdstatic.com/static/searchresult/pkg/result_16a05c3.js" ></script>
+<script type="text/javascript">!function(){    window._alaEnter && window._alaEnter !== true && window._alaEnter('sample');
+    var sample = {"UI_YUNYING_11":"0","UI_YUNYING_13":"1","UI_YUNYING_21":"0","UI_YUNYING_31":"2","UI_PC_LOW_QUALITY_FILT":"0","UI_MERGE_ALL_RESULTS":"2","UI_WISE_PEITU_QUERY":"0","UI_WISE_TEXT_Q":"0","UI_PC_RIGHT_AD":"0","UI_WISE_PS_RS":"5","UI_WISE_HOMEPAGE_FEED":"1","UI_PC_TJAD":"0","UI_PC_JIAZHUANG_FORWARD":"0","UI_WISE_SET_TAG":"2","FEED_SAMPLE":"0","UI_WISE_DETAIL_SET_SLIDER_CHANGE":"0","UI_WISE_CYCS":"1","UI_WISE_CTR_PREDICT":"1","UI_GUANGGAO_ONE":"0","UI_WISE_ANIMATE":"2","UI_WISE_RESULT_IMG_SET":"1","UI_WISE_FEED_GALLERY":"1"};
+    var keyValue = '';
+    for(var name in sample) {
+        keyValue +=  name + ':' + sample[name] + ',';
+    }
+    window.samplekey = keyValue.substr(0, keyValue.length - 1);
+}();
+!function(){// ala进入问题调查
+window._alaEnter && window._alaEnter !== true && window._alaEnter('prerequire');
+require.async(['searchresult:widget/ui/app/app'], function (app) {
+    window._alaEnter && window._alaEnter !== true && window._alaEnter('postrequire');
+    require.async(['searchresult:widget/ui/action/base/base']);
+    app.setPageInfo({
+        // 在后端对query进行抽样的时候，用这个来统计实验组和对照组
+        queryPageType : '0',
+        tag_type: '',
+        tag: '',
+        subtag: '',
+        gsm: '1e',
+        listNum : '1952',
+        dispNum : '1429645',
+        bdIsClustered : '1',
+        fr : '',
+        sme : '',
+        ie : 'utf-8',
+        oe : 'utf-8',
+        fInsertNum : "0",
+        queryWordEnc: '%E9%A3%8E%E6%99%AF',
+        queryWordGBKEnc: '%B7%E7%BE%B0',
+        queryWord : '风景',
+        queryUrlWord : '%E9%A3%8E%E6%99%AF',
+        bdFmtDispNum : '1429645',
+        bdSearchTime : '',
+        gbkword:'%B7%E7%BE%B0',
+        resTabs : [],
+        userid:'',
+        useSign:'',
+        userNumID:'', // 这个才是真正的 userid
+        encodeUserNumId:'',
+        spaceUrl:'',
+        hasUserName: ('' == '0'),
+        bdstoken : '',
+        thirdLogo :'0', // 第三方网站登录的logo，为空则不显示
+        se:'',
+        needIE:'1',
+        jit:'',
+        showHot:'',
+        hasResult: '1',
+        aspSID:'b11789ed9f0922a8',
+        oriquery: '',
+        fm: '',
+        hs: '0',
+        adBigPicPos: -1,
+                checkHttps: 1,
+                strategyType: 'normal',
+                                        personalized:'0'
+    });
+    app.setData('jsConfs', {    "normal": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,"lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,"pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,"maxImgWidth": 400,"pageMoreNum": 10,"leftMenu": 0    },    "comic": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 190,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "ald": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 190,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "star": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 260,        "maxBaseLineHeight": 280,        "minBaseLineHeight": 250,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu":0    },    "avatar_brand": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 300,        "maxBaseLineHeight": 320,        "minBaseLineHeight": 280,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 500,        "pageMoreNum": 10,"leftMenu": 0    },    "avatar_star": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 260,        "maxBaseLineHeight": 280,        "minBaseLineHeight": 250,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,"leftMenu": 0    },    "avatar_head": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 190    },    "avatar_wallpaper": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 180,        "maxBaseLineHeight": 200,        "minBaseLineHeight": 160,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 190    },    "single": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,        "pageLineNum": 1,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "personalized": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,        "pageLineNum": 2,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    }}
+);
+    app.setData('imgData', {    "queryEnc":"%E9%A3%8E%E6%99%AF",    "displayNum":1429645,    "bdIsClustered" : "1",    "listNum":1952,    "bdFmtDispNum" : "1429645",    "bdSearchTime" : "",    "isNeedAsyncRequest":0,"data":[{"thumbURL":"http://img0.imgtn.bdimg.com/it/u=3762055337,1151660603&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img0.imgtn.bdimg.com/it/u=3762055337,1151660603&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":0,            "objURL":"http://image58.360doc.com/DownloadImg/2013/01/0119/29320561_10.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Frtv_z&e3Byjfhy_z&e3Bv54AzdH3F88bAzdH3Fnalbam8b_8d_z&e3Bfip4s",            "fromURLHost":"pic.yesky.com","currentIndex":"",            "width":1680,            "height":1050,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"28815507870",            "is":"3197736604,1908175333",            "partnerId":0,            "bdSetImgNum":8,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>风景<\/strong>实物摄影壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3762055337,1151660603",            "os" : "552724203,395029098",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img5.imgtn.bdimg.com/it/u=197144486,1264112589&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img5.imgtn.bdimg.com/it/u=197144486,1264112589&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":1,            "objURL":"http://img6.faloo.com/Picture/0x0/0/439/439220.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Frr_z&e3Buws55_z&e3Bv54AzdH3FeAzdH3F9nldda_z&e3Bip4s",            "fromURLHost":"pp.faloo.com","currentIndex":"",            "width":1280,            "height":853,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"38256250390",            "is":"257865244,3223320116",            "partnerId":0,            "bdSetImgNum":7,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"高清<strong>风景<\/strong>摄影",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "197144486,1264112589",            "os" : "2987133205,2519329613",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img2.imgtn.bdimg.com/it/u=1230357351,92223899&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img2.imgtn.bdimg.com/it/u=1230357351,92223899&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":2,            "objURL":"http://pic38.nipic.com/20140222/2656254_095504906000_2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Fzi7wgptAzdH3F9c0ncd_d_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":1024,            "height":640,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"24752116560",            "is":"1581144238,336088647",            "partnerId":0,            "bdSetImgNum":7,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"19寸超大桌面壁纸摄影<strong>风景<\/strong>开阔",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1230357351,92223899",            "os" : "3453909,192827169",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img3.imgtn.bdimg.com/it/u=3467076331,4034849124&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img3.imgtn.bdimg.com/it/u=3467076331,4034849124&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":3,            "objURL":"http://img2.niutuku.com/desk/1207/1100/bizhi-1100-7201.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fks52_z&e3B8mn_z&e3Bv54AzdH3Ffszk3c8bbAzdH3Fks52AzdH3FfpwptvAzdH3F8banaaabnda88lnld89d0lcAzdH3F",            "fromURLHost":"blog.163.com","currentIndex":"",            "width":1024,            "height":768,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"32954937120",            "is":"3371649185,3746158748",            "partnerId":0,            "bdSetImgNum":16,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"宁静_<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3467076331,4034849124",            "os" : "2200719005,1982799753",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=3956805945,1536371408&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=3956805945,1536371408&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":4,            "objURL":"http://tuku.myejia.com/attachment/Big_Img/201210/26/wallpaper_10922261103184.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fih_z&e3Bkjfp-owssrwrj6_z&e3BgjpAzdH3FJwrwg-i57fjf-uw64-i54j-u56jfp_8mbax8aca_z&e3Bip4s",            "fromURLHost":"hk.best-wallpaper.net","currentIndex":"",            "width":720,            "height":467,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"2493045000",            "is":"1919985933,2956848950",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"日本<strong>风景<\/strong>摄影壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3956805945,1536371408",            "os" : "984282770,9194592",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=3727423004,27008927&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=3727423004,27008927&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":5,            "objURL":"http://img161.poco.cn/mypoco/myphoto/20100609/15/45994791201006091555364676567531243_000.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Ffi5oAzdH3F8AzdH3F0AzdH3F90dm9dnh91l0nbbb_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":4256,            "height":2832,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"21087413650",            "is":"2186074078,4071464450",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"壁纸 <strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3727423004,27008927",            "os" : "1805581166,3798923913",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img2.imgtn.bdimg.com/it/u=62970350,2493822996&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img2.imgtn.bdimg.com/it/u=62970350,2493822996&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":6,            "objURL":"http://pic26.photophoto.cn/20130112/0034034812844556_b.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Ffi5oAzdH3Fllb0amd_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":1024,            "height":731,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"40813902740",            "is":"3262678632,2242718283",            "partnerId":0,            "bdSetImgNum":6,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"欧美自然<strong>风景<\/strong>摄影",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "62970350,2493822996",            "os" : "1333710683,3118916316",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img0.imgtn.bdimg.com/it/u=423526450,2176987130&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img0.imgtn.bdimg.com/it/u=423526450,2176987130&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":7,            "objURL":"http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1301/24/c0/17688672_1359016769891.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fowssrwrj6_z&e3Brv5gstgj_z&e3Bv54_z&e3BvgAzdH3Frtvf576vjAzdH3F8c0mc_9_z&e3Bip4s",            "fromURLHost":"wallpaper.pconline.com.cn","currentIndex":"",            "width":640,            "height":960,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"35283978670",            "is":"4216930026,2794649625",            "partnerId":0,            "bdSetImgNum":11,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"摄影<strong>风景<\/strong>手机壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "423526450,2176987130",            "os" : "3464521233,2364437749",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img5.imgtn.bdimg.com/it/u=4005694883,4217992456&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img5.imgtn.bdimg.com/it/u=4005694883,4217992456&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":8,            "objURL":"http://img.ph.126.net/Vyi2b79Jj7rxWNmdLoi4lA==/1096907984242813238",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fih_z&e3Bkjfp-owssrwrj6_z&e3BgjpAzdH3FJwrwg-i57fjf-uw64-i54j-u56jfp_8mbax8aca_z&e3Bip4s",            "fromURLHost":"hk.best-wallpaper.net","currentIndex":"",            "width":1028,            "height":644,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"46427595550",            "is":"648463995,4163271170",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"日本<strong>风景<\/strong>摄影壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "4005694883,4217992456",            "os" : "1169483787,2410577272",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img4.imgtn.bdimg.com/it/u=2062872003,25184431&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img4.imgtn.bdimg.com/it/u=2062872003,25184431&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":9,            "objURL":"http://h8.86.cc/walls/20160527/1440x900_7dcd71f4c78401c.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fks52_z&e3Bftgw_z&e3Bv54_z&e3BvgAzdH3FfAzdH3Fks52_w11jbwc1a8adxif9_z&e3Bip4s",            "fromURLHost":"blog.sina.com.cn","currentIndex":"",            "width":1440,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"34453276600",            "is":"3401930628,217289082",            "partnerId":0,            "bdSetImgNum":6,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"壁纸 <strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2062872003,25184431",            "os" : "3365124615,2238071252",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img4.imgtn.bdimg.com/it/u=1943249770,628140654&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img4.imgtn.bdimg.com/it/u=1943249770,628140654&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":10,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/3801213fb80e7beca9004ec5252eb9389b506b38.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7sa0lb-9ca9_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1000,            "height":667,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"27696723140",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"漂亮,<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1943249770,628140654",            "os" : "212069589,2614216017",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img5.imgtn.bdimg.com/it/u=2415818675,3808232368&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img5.imgtn.bdimg.com/it/u=2415818675,3808232368&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":11,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=a58eea265943fbf2d121ae60d817a0f5/b3119313b07eca8006eaf6c99b2397dda1448335.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb8mba9l0d",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":803,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"27788804470",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"户外,加拿大,树,冬天,山,山脉,白昼,雪,人间天堂,贾斯珀国家公园,<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2415818675,3808232368",            "os" : "640848187,2757458474",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img3.imgtn.bdimg.com/it/u=169725531,3494195910&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img3.imgtn.bdimg.com/it/u=169725531,3494195910&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":12,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/b8014a90f603738db70ae707b91bb051f819ec57.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7sabm9-bddm_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1000,            "height":662,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"23346712310",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>风景<\/strong>,南太平洋",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "169725531,3494195910",            "os" : "1106568313,2506487002",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=3631673329,4039483564&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=3631673329,4039483564&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":13,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/0b55b319ebc4b745d1a5e304c5fc1e178a8215ea.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3FKINA98dnc_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1024,            "height":653,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"50910964410",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"芬兰,斯堪的纳维亚,欧洲,冬天,<strong>风景<\/strong>,35毫米,桦树,植物",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3631673329,4039483564",            "os" : "2554317319,233866388",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img5.imgtn.bdimg.com/it/u=1243655571,2094742982&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img5.imgtn.bdimg.com/it/u=1243655571,2094742982&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":14,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=5602ad1fab8b87d6444fa35c6f61424d/267f9e2f07082838fa2ec33ab299a9014c08f1f9.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3F8aa9dc9bca",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"57185308860",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"天空,冰,摄影,与摄影有关的场景,宁静,自然,白昼,伊路利萨特冰湾,<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1243655571,2094742982",            "os" : "1844997892,2596830621",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img0.imgtn.bdimg.com/it/u=3330496398,528486966&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img0.imgtn.bdimg.com/it/u=3330496398,528486966&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":15,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/9825bc315c6034a81c94dd93c1134954092376a9.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3Ftvadlaadlb_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1024,            "height":683,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"60164730140",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"夏天,<strong>风景<\/strong>,户外,胜地,树,无人,天空,外国,热带,棕榈树,白天,平房,印度",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3330496398,528486966",            "os" : "3941491810,1189595674",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=3757187724,3902485955&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=3757187724,3902485955&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":16,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/f3d3572c11dfa9eca8dd9e1768d0f703918fc13b.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3Ffrf-98mn-8m0d9_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":673,            "height":1024,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"16020151530",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"海滩,大洋洲,旅游,太平洋,南太平洋,西萨摩亚,黄道十二宫,海滩<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3757187724,3902485955",            "os" : "2072015864,3506849074",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img0.imgtn.bdimg.com/it/u=1679707090,2268156548&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img0.imgtn.bdimg.com/it/u=1679707090,2268156548&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":17,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=c4cbfbe2eccd7b89fd6132c0674d28d2/9f510fb30f2442a7c9ff068ddb43ad4bd1130220.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fband80c8l",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"11809349550",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"枝繁叶茂,云,棕榈树,岛,白昼,海洋,海湾,海滩,印度洋,人间天堂,<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1679707090,2268156548",            "os" : "1781498351,3505545951",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img3.imgtn.bdimg.com/it/u=1019761374,1197310851&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=1019761374,1197310851&fm=214&gp=0.jpg","FromURL":"http:\/\/www.netbian.com\/desk\/16162-1920x1080.htm"},{"ObjURL":"http:\/\/pic1.win4000.com\/wallpaper\/f\/5874b0ae90692.jpg","FromURL":"http:\/\/www.win4000.com\/wallpaper_big_119936_1.html"}],"adType":"0","middleURL":"http://img3.imgtn.bdimg.com/it/u=1019761374,1197310851&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img3.imgtn.bdimg.com/it/u=1019761374,1197310851&fm=27&gp=0.jpg",            "pageNum":18,            "objURL":"http://pic.jj20.com/up/allimg/1011/112G6002358/16112F02358-1.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B33da_z&e3Bv54AzdH3FkzAzdH3Fz6u2AzdH3Fu2i3AzdH3Fl98l_z&e3Bip4s",            "fromURLHost":"www.jj20.com","currentIndex":"",            "width":1920,            "height":1080,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"173002272960",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>风景<\/strong>图片精选壁纸大全(1/16)",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1019761374,1197310851",            "os" : "1395860704,923477152",            "simid" : "3537633218,307852026",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img2.imgtn.bdimg.com/it/u=1057987236,1174585280&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img3.imgtn.bdimg.com\/it\/u=1057987236,1174585280&fm=214&gp=0.jpg","FromURL":"http:\/\/travel.sina.com.cn\/domestic\/pages\/2016-08-25\/detail-ifxvixsh6595625.shtml"},{"ObjURL":"http:\/\/pic.sc.chinaz.com\/files\/pic\/pic9\/201303\/xpic10160_s.jpg","FromURL":"http:\/\/sc.chinaz.com\/tupian\/130324499154.htm"}],"adType":"0","middleURL":"http://img2.imgtn.bdimg.com/it/u=1057987236,1174585280&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img2.imgtn.bdimg.com/it/u=1057987236,1174585280&fm=27&gp=0.jpg",            "pageNum":19,            "objURL":"http://pic1.cxtuku.com/00/08/33/b058f71057c8.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bvxp7h7_z&e3Bv54AzdH3Frtv_bnnacb_z&e3Bip4s",            "fromURLHost":"www.cxtuku.com","currentIndex":"",            "width":600,            "height":397,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"172899758570",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"唯美西藏山水<strong>风景<\/strong>[jpg,装饰素材]",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1057987236,1174585280",            "os" : "187570078,2738541929",            "simid" : "3259730119,70384914",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img3.imgtn.bdimg.com/it/u=3135919063,2322433596&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img3.imgtn.bdimg.com/it/u=3135919063,2322433596&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":20,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=a6fe110d0be93901420f857d13853e92/203fb80e7bec54e7ecf6b333b3389b504fc26a81.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3F8aa9b0lmmb",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"7299338550",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"在大岛屿的海滩<strong>风景<\/strong>,以明确的蓝天",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3135919063,2322433596",            "os" : "2782849637,3267399884",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img5.imgtn.bdimg.com/it/u=2357619894,3620973597&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=2357619894,3620973597&fm=214&gp=0.jpg","FromURL":"http:\/\/blog.sina.com.cn\/s\/blog_ee2376380102w1ak.html"},{"ObjURL":"http:\/\/img75.nipic.com\/file\/20160727\/3970232_060612019000_1.jpg","FromURL":"http:\/\/www.nipic.com\/show\/9123807.html"}],"adType":"0","middleURL":"http://img5.imgtn.bdimg.com/it/u=2357619894,3620973597&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img5.imgtn.bdimg.com/it/u=2357619894,3620973597&fm=27&gp=0.jpg",            "pageNum":21,            "objURL":"http://pic36.nipic.com/20131203/3822951_101052690000_2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Ffi5oAzdH3Flnml88m_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":1024,            "height":680,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"115613120040",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"海边<strong>风景<\/strong>图片",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2357619894,3620973597",            "os" : "4182913696,44754832",            "simid" : "3406793396,134507126",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=947982974,538813931&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=947982974,538813931&fm=214&gp=0.jpg","FromURL":"http:\/\/www.weibo.com\/p\/1005055065161341\/home?from=page_100505&mod=tab"},{"ObjURL":"http:\/\/wx2.sinaimg.cn\/orj360\/006jvycwgy1feb4sh4m69j308c069my9.jpg","FromURL":"http:\/\/weibo.com\/u\/6169251778"}],"adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=947982974,538813931&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img1.imgtn.bdimg.com/it/u=947982974,538813931&fm=27&gp=0.jpg",            "pageNum":22,            "objURL":"http://tupian.enterdesk.com/2013/mxy/12/11/4/4.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bjgpj61jfh_z&e3Bv54AzdH3FetjoAzdH3F88aAzdH3Fblll_8_z&e3Bip4s",            "fromURLHost":"www.enterdesk.com","currentIndex":"",            "width":1024,            "height":768,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"7003591540",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"好看的山水田园<strong>风景<\/strong>油画",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "947982974,538813931",            "os" : "2848246121,2176273819",            "simid" : "4115792887,599295486",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img5.imgtn.bdimg.com/it/u=611123708,342555561&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=611123708,342555561&fm=214&gp=0.jpg","FromURL":"http:\/\/blog.sina.com.cn\/s\/blog_dfd64cb30102w1qb.html"},{"ObjURL":"http:\/\/www.th7.cn\/d\/file\/p\/2017\/01\/13\/2ecc9bffc2bc04d6d3ec97ef2468b21b.jpg","FromURL":"http:\/\/www.th7.cn\/qq\/name\/201701\/199698.shtml"}],"adType":"0","middleURL":"http://img5.imgtn.bdimg.com/it/u=611123708,342555561&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img5.imgtn.bdimg.com/it/u=611123708,342555561&fm=27&gp=0.jpg",            "pageNum":23,            "objURL":"http://tupian.enterdesk.com/2013/mxy/12/11/4/2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bjgpj61jfh_z&e3Bv54AzdH3FetjoAzdH3F88aAzdH3Fblll_d_z&e3Bip4s",            "fromURLHost":"www.enterdesk.com","currentIndex":"",            "width":1024,            "height":768,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"74814575110",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"好看的山水田园<strong>风景<\/strong>油画",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "611123708,342555561",            "os" : "2816470605,2148281285",            "simid" : "4207595290,652756792",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img2.imgtn.bdimg.com/it/u=222952879,1105828417&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img2.imgtn.bdimg.com/it/u=222952879,1105828417&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":24,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/d50735fae6cd7b89051430a0052442a7d9330e9c.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7saamb-a9ab_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1000,            "height":665,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"10330861440",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"漂亮,风车,<strong>风景<\/strong>,荷兰",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "222952879,1105828417",            "os" : "623310593,2197687944",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img0.imgtn.bdimg.com/it/u=1145214342,184623774&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img0.imgtn.bdimg.com/it/u=1145214342,184623774&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":25,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=8a953b1817950a7b6138468762b808ac/03087bf40ad162d9344e02321bdfa9ec8a13cd78.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3F8aad8nadna",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"57777873360",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"考艾市太平洋棕榈树<strong>风景<\/strong>区",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1145214342,184623774",            "os" : "1022290136,3034175927",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img4.imgtn.bdimg.com/it/u=1985688863,4208119605&fm=11&gp=0.jpg","adType":"0","middleURL":"http://img4.imgtn.bdimg.com/it/u=1985688863,4208119605&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":26,            "objURL":"http://file06.16sucai.com/2016/0803/2fd023ed4f4d38facf52043d595a0af2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bf7frt2_z&e3Bv54AzdH3Fooo_8mf7vwt_v54AzdH3Fda8mAzdH3FabAzdH3Fbbl8m_z&e3Bip4s",            "fromURLHost":"www.suspig.com","currentIndex":"",            "width":1100,            "height":734,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"20586954790",            "is":"1918900516,2369489771",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>风景<\/strong>摄影超清图片",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1985688863,4208119605",            "os" : "3662353236,3711774643",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=3867132015,1304980646&fm=200&gp=0.jpg","adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=3867132015,1304980646&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":27,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/962bd40735fae6cd22f81e4705b30f2442a70f43.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7sacmb-9b0a_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":665,            "height":1000,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"6027209780",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"天空,晴朗,城镇,乡村,希腊,岛屿,多德卡尼斯群岛,胜地,度假,自然,<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3867132015,1304980646",            "os" : "1091174379,2136970402",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img1.imgtn.bdimg.com/it/u=2382350308,4278424087&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img3.imgtn.bdimg.com\/it\/u=2382350308,4278424087&fm=214&gp=0.jpg","FromURL":"http:\/\/www.enterdesk.com\/bizhi\/5852.html"},{"ObjURL":"http:\/\/img.51ztzj.com\/upload\/image\/20130926\/sj20130092712123_279x419.jpg","FromURL":"http:\/\/www.51ztzj.com\/desk\/27082.htm"}],"adType":"0","middleURL":"http://img1.imgtn.bdimg.com/it/u=2382350308,4278424087&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img1.imgtn.bdimg.com/it/u=2382350308,4278424087&fm=27&gp=0.jpg",            "pageNum":28,            "objURL":"http://tupian.enterdesk.com/2013/mxy/12/28/1/3.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bjgpj61jfh_z&e3Bv54AzdH3FktzitAzdH3Fl8ba_z&e3Bip4s",            "fromURLHost":"www.enterdesk.com","currentIndex":"",            "width":1920,            "height":1200,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"157587282490",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"清新自然雅致的<strong>风景<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2382350308,4278424087",            "os" : "2855728208,2220184923",            "simid" : "4173580961,830540329",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"http://img3.imgtn.bdimg.com/it/u=2976427166,2178524819&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=2976427166,2178524819&fm=214&gp=0.jpg","FromURL":"http:\/\/pic.ali213.net\/html\/2013-03-26\/12385.html"},{"ObjURL":"http:\/\/h.hiphotos.baidu.com\/exp\/w=500\/sign=129182a7ae86c91708035239f93c70c6\/962bd40735fae6cdfcd2cd3e06b30f2442a70f0e.jpg","FromURL":"http:\/\/jingyan.baidu.com\/article\/e5c39bf5c452c439d7603328.html"}],"adType":"0","middleURL":"http://img3.imgtn.bdimg.com/it/u=2976427166,2178524819&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"http://img3.imgtn.bdimg.com/it/u=2976427166,2178524819&fm=27&gp=0.jpg",            "pageNum":29,            "objURL":"http://img.tuku.cn/file_big/201503/d8905515d1c046aeba51025f0ea842f0.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bp7h7_z&e3BvgAzdH3FktzitAzdH3Frtv898bb_z&e3Bwfrx",            "fromURLHost":"www.tuku.cn","currentIndex":"",            "width":1920,            "height":1080,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"160024639500",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"金秋美景壁纸图片第5张_<strong>风景<\/strong>壁纸_1920x1080桌面壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2976427166,2178524819",            "os" : "2316415167,3115078964",            "simid" : "4218842051,657807203",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{}]}
+);
+    app.setData('fcadData', {"fcData":[],"fcMidData":[],"fcBtData":[],"fcType":"","adType":0,"fcAdDatasLen":"0"}
+);
+    app.setData('xgMidData', {"xgMidData":[],"xgMidDataLen":"0"});
+    app.setData('rpData', {"data": []});
+    app.setData('shootBannerData', window.shootBannerData);
+    app.setData('browserRsData', {    "Status" : "0",    "query" : "",    "desc" : "",    "id" : "",    "photos" :[]}
+);
+    app.setData('rsQuery', [["风景大图片", "%B7%E7%BE%B0%B4%F3%CD%BC%C6%AC", "0", "0"],["乡村田园风景油画", "%CF%E7%B4%E5%CC%EF%D4%B0%B7%E7%BE%B0%D3%CD%BB%AD", "0", "0"],["美得让人窒息的风景", "%C3%C0%B5%C3%C8%C3%C8%CB%D6%CF%CF%A2%B5%C4%B7%E7%BE%B0", "0", "0"],["风景简笔画图片大全", "%B7%E7%BE%B0%BC%F2%B1%CA%BB%AD%CD%BC%C6%AC%B4%F3%C8%AB", "0", "0"],["夏天风景", "%CF%C4%CC%EC%B7%E7%BE%B0", "0", "0"],["丽江风景", "%C0%F6%BD%AD%B7%E7%BE%B0", "0", "0"],["风景电脑壁纸", "%B7%E7%BE%B0%B5%E7%C4%D4%B1%DA%D6%BD", "0", "0"],["风景海报", "%B7%E7%BE%B0%BA%A3%B1%A8", "0", "0"],["深圳风景", "%C9%EE%DB%DA%B7%E7%BE%B0", "0", "0"],["意境唯美小清新风景", "%D2%E2%BE%B3%CE%A8%C3%C0%D0%A1%C7%E5%D0%C2%B7%E7%BE%B0", "0", "0"]]);
+    app.setData('hotWords', [{            "query": "重庆4.8级地震",            "flag": "重庆4.8级地震",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E9%87%8D%E5%BA%864.8%E7%BA%A7%E5%9C%B0%E9%9C%87",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "内蒙古现罕见日柱",            "flag": "内蒙古现罕见日柱",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%86%85%E8%92%99%E5%8F%A4%E7%8E%B0%E7%BD%95%E8%A7%81%E6%97%A5%E6%9F%B1",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "女歌手本兮22岁逝世",            "flag": "女歌手本兮22岁逝世",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%A5%B3%E6%AD%8C%E6%89%8B%E6%9C%AC%E5%85%AE22%E5%B2%81%E9%80%9D%E4%B8%96",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "蒋劲夫托举佟丽娅",            "flag": "蒋劲夫托举佟丽娅",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E8%92%8B%E5%8A%B2%E5%A4%AB%E6%89%98%E4%B8%BE%E4%BD%9F%E4%B8%BD%E5%A8%85",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "打工钱被咬成碎片",            "flag": "打工钱被咬成碎片",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%89%93%E5%B7%A5%E9%92%B1%E8%A2%AB%E5%92%AC%E6%88%90%E7%A2%8E%E7%89%87",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "村民发现奇石似飞碟",            "flag": "村民发现奇石似飞碟",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%9D%91%E6%B0%91%E5%8F%91%E7%8E%B0%E5%A5%87%E7%9F%B3%E4%BC%BC%E9%A3%9E%E7%A2%9F",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "环卫夫妻身高不足一米四",            "flag": "环卫夫妻身高不足一米四",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E7%8E%AF%E5%8D%AB%E5%A4%AB%E5%A6%BB%E8%BA%AB%E9%AB%98%E4%B8%8D%E8%B6%B3%E4%B8%80%E7%B1%B3%E5%9B%9B",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "沙滩现巨大黑色怪物",            "flag": "沙滩现巨大黑色怪物",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%B2%99%E6%BB%A9%E7%8E%B0%E5%B7%A8%E5%A4%A7%E9%BB%91%E8%89%B2%E6%80%AA%E7%89%A9",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "黄子韬搂何炅",            "flag": "黄子韬搂何炅",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E9%BB%84%E5%AD%90%E9%9F%AC%E6%90%82%E4%BD%95%E7%82%85",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "2016nba圣诞大战",            "flag": "2016nba圣诞大战",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=2016nba%E5%9C%A3%E8%AF%9E%E5%A4%A7%E6%88%98",            "hot": "0",            "fromurl": "",            "photos": []        }]);
+
+    
+        app.init();
+    app.run();
+});
+}();
+!function(){    window.tn = 'result';
+    window.vsid = '764039afe9068b4cd9ee1868513e06566b593d9c';
+    if ('index' === window.tn
+        || 'result' === window.tn
+        || 'detail' === window.tn) {
+        var sttb = document.getElementById('sttb');
+        sttb.removeAttribute && sttb.removeAttribute('title');
+    }
+    /**
+     * 统计代码
+    **/
+    window.ss = function(){
+        var URL = '//imgstat.baidu.com/9.gif?rainbow=1&';
+        function request(url){
+            var seed = Math.random();
+            var img = window[seed] = new Image;
+            img.onload = img.onerror = function(){
+                window[seed] = null;
+                img.onload = img.onerror = null;
+                img = null;
+            };
+            img.src = url;
+        }
+
+        /* p = 0, 首页八张demo图片点击统计
+         * p = 1, 结果页tab相关： name=stu相同tab显示；name=face 人脸搜索tab显示; type=show展现；type=click点击
+         * p = pv, 结果页PV统计：data=1，有结果；data=0无结果；data=-1，down页面
+         **/
+
+        return function(arg, url, e){
+            var s = URL + json2Query(arg) + '&' + Math.random();
+            request(s);
+            if(url){
+                setTimeout(function(){
+                    location.href = url;
+                }, 300);
+                e = e || window.event;
+                if(e){
+                    if(e.preventDefault){
+                        e.preventDefault();
+                    }else{
+                        e.returnValue = false;
+                    }
+                }
+
+            }
+        };
+
+    }();
+    window.__originTitle = document.title;
+    function json2Query(json){
+        if(json == null || typeof json != 'object') return json;
+        var query = [];
+        for(var i in json){
+            if(i != '')
+                query[query.length] = i + '=' + json[i];
+        }
+        return query.join('&');
+    }
+
+    require.async(["common:widget/ui/base/base","common:widget/shitu/run"],function($, shitu){
+        window.$ = $;
+        $(document).ready(function() {
+            var st = new shitu();
+            st.init();
+            window.stInstance = st;
+        });
+    });
+}();
+!function(){require.async(["searchresult:widget/searchBox/imgFilter/init"],function(filter){
+	filter.init();
+})
+
+
+}();
+!function(){    if (window.hotspotData) {
+        require.async(['searchresult:widget/pagelets/base/timeliness/init'], function (Timeliness) {
+            new Timeliness().init(window.hotspotData);
+        });
+    }
+}();
+!function(){/**
+* isRefresh 用来判断禁止se或查询的参数是否生效,false表示无须清零，true表示需要清零
+*/
+require.async(["common:widget/ui/base/base","searchresult:widget/ui/utils/utils","common:widget/ui/historyRecord/historyRecord"],function( $, utils, HistoryRecord){
+
+    window.s_submit = function(form,isRefresh){
+
+
+//图片url检索跳转
+var keyword = form.word.value;
+
+if ($.trim(keyword).length > 0) {
+    var historyRecord = new HistoryRecord({historyKey: 'indexPageSugList'});
+    historyRecord.setRecord(keyword);
+    $.cookie.set('cleanHistoryStatus', 0, {path: '/'});
+}
+
+
+var tiaoma = /^[\s]*http[s]*\:\/\/[\s\S]*\.[jpg|gif|png|bmp|jpeg]*[\s]*$/.test(keyword) ||/img5\.imgtn\.bdimg\.com/.test(keyword) || /mt1\.baidu\.com\/timg/.test(keyword);
+var jumpURL = '/n/pc_search?queryImageUrl='+encodeURIComponent(keyword)+'&fm=searchresult&pos=urlsearch&uptype=urlsearch';
+
+
+        if (tiaoma) {
+            // speed
+            $.cookie('uploadTime', new Date().getTime(), {path: '/'});
+
+           location.href = jumpURL;
+           return false;
+        }
+
+
+        var searchConf = utils.query2Json(utils.escapeXSS(window.location.search.substring(1)));
+        if(typeof searchConf.fm == "undefined"){searchConf.fm = '';}
+        if(typeof searchConf.fmq == "undefined"){searchConf.fmq = '';}
+        if(utils.trim(searchConf.queryWord) == form.word.value){
+            form.fmq.value = utils.fmqValueSet();
+        }else{
+            var fmqDate = new Date();
+            var T = fmqDate.getTime();
+            if(searchConf.fmq.indexOf('m') > -1 && searchConf.fmq.indexOf('_m') == -1 && searchConf.fmq.indexOf('_R') == -1){
+                var fmqvalue = searchConf.fmq;
+                form.fmq.value = T + '_' +fmqvalue + '_R';
+            }else{
+                form.fmq.value =  T + '_R';
+            }
+
+        }
+        var isflip = $('body').hasClass('flip');
+        form.tn.value = "baiduimage";
+
+        form.ct.value = "201326592";
+        form.cl.value = "2";
+        form.lm.value = "-1";
+        form.pv.value = "";
+        form.action = "/search/index";
+        if (window.canUseHttps) {
+            form.action = 'https://' + window.location.host + '/search/index';
+        }
+
+        if(isflip) {
+            form.action = "/search/flip";
+        }
+        if(isRefresh == true){
+            // submit直接提交新query
+            form.se.value = "1";
+        }else{
+            var showtab =  parseInt(searchConf.showtab);
+            if(!isNaN(showtab)&&showtab>0){
+                form.showtab.value = showtab;
+            }
+        }
+        form.ctd.value = (+new Date()) + "^00_" + $(window).width() + "X" +  window.innerHeight;
+
+        return true;
+    }
+})
+
+}();
+!function(){
+		window.bid = -1;
+
+	if(!window.passport){
+	    var script = document.createElement("script");
+	    script.src = '//passport.baidu.com/passApi/js/uni_login_wrapper.js?cdnversion=' + (new Date).getTime();
+	    document.body.appendChild(script);
+	}
+	require.async(["common:widget/loginbar/loginbar"],function(loginbar){
+
+	    loginbar.init();        
+
+	});
+
+
+}();
+!function(){    require.async(['searchresult:widget/pagelets/base/backTop/init']);
+}();
+!function(){    
+            require.async(['searchresult:widget/ui/utils/utils'], function(utils){
+            utils.detectHttps();
+        });
+    }();
+!function(){    require.async(['common:widget/ui/monitorRequest/monitorRequest'],function(monitorRequest){
+	var userid = "";
+	var q = "%E9%A3%8E%E6%99%AF";
+	var tn = "result";
+	var host = "//imgstat.baidu.com/4.gif";
+	var hostSweb = "//image.baidu.com/pv/pv2.gif";
+    var rsw = "";
+    if(location.href !== document.referrer && document.referrer != ""){
+        rsw = "&rs=";
+    }
+    else{
+        rsw = '';
+    }
+    var samplekey = window.samplekey || '';
+    var img = window["__log__" + (new Date()).getTime()*Math.random()] = document.createElement('img');
+    monitorRequest( host + "?logid=12760819722846020264&ie=utf-8&q="+ q +"&userid=" + userid + "&samplekey=" + encodeURIComponent(samplekey) + "&event_type=pv&tn=" + tn + "&tpl=result.page&fr=" + rsw);
+    var imgSweb = window["__log__" + (new Date()).getTime()*Math.random()] = document.createElement('img');
+    imgSweb.src = hostSweb + "?ie=utf-8&q="+ q +"&userid=" + userid + "&samplekey=" + encodeURIComponent(samplekey) + "&event_type=pv&tn=" + tn + "&tpl=&fr=" + rsw + '&' + new Date() * Math.random();
+    });
+}();
+!function(){    require.async(["common:widget/ui/fmCheck/fmCheck"],function(fmCheck){
+        fmCheck.init();
+    });
+}();
+!function(){require.async(['common:widget/ui/base/base'], function($) {
+    var userFrom = '';
+
+    var elem = document.createElement('a');
+    elem.href = document.referrer;
+    var hostname = elem['hostname'];
+    var urlfr = '';
+    var chenjin = '';
+    var urlword = '%E9%A3%8E%E6%99%AF';
+
+    if (hostname !== 'image.baidu.com') {
+        if (urlfr) {
+            userFrom += urlfr;
+            if (chenjin === '1') {
+                userFrom += 'chenjin1';
+            } else if (chenjin === '0') {
+                var wordList = ["%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87",
+                    "%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8",
+                    "%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8%E5%9B%BE%E7%89%87",
+                    "%E5%A4%B4%E5%83%8F",
+                    "%E5%A4%B4%E5%83%8F%E5%9B%BE%E7%89%87"];
+                if (wordList.indexOf(urlword) >= 0) {
+                    userFrom += 'chenjin0';
+                }
+            }
+        } else {
+            userFrom = hostname;
+        }
+    } else {
+        userFrom = $.cookie('userFrom') || '';
+    }
+
+    if (userFrom.length > 0) {
+        var date = new Date();
+        date.setTime(date.getTime() + (10 * 60 * 1000));
+        $.cookie('userFrom', userFrom, {path: '/', expires: date, domain: '.baidu.com'});
+    } else {
+        $.cookie('userFrom', null, {path: '/', domain: '.baidu.com'});
+    }
+});
+}();
+!function(){            require.async(["common:widget/ui/durationStat/durationStat"],function(durationStat){
+            durationStat.heartStart({
+                pageId: 2 - 0,
+                sid: 'ca7e919cac2b228c77cdff276ae569de5f3675bb',
+                cs: '',
+                word: '风景'
+            });
+        });
+    }();</script>   </html> <!--20925862080710310666090121-->
+<script> var _trace_page_logid = 2092586208; </script><!--20925862080660110090090121-->
+<script> var _trace_page_logid = 2092586208; </script>
