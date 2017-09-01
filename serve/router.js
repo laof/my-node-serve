@@ -1,6 +1,10 @@
 let http = require('http');
 let qs = require('querystring');
 let url = require('url');
+exports.create = (router) => {
+    console.log(require('./serve/api.json'));
+    // router.post('/outlogin',()=>{});
+}
 module.exports = [
     {
         api: '/outlogin',

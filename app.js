@@ -12,11 +12,12 @@ let app = express();
 let server = require('http').Server(app);
 let webSocket = require('socket.io')(server);
 
+require('./serve/router').create();
+require('./serve/socket.io').create(webSocket);
+
 let port = 3030;
 app.use(express.static('src'));
-// app.use();
-// app.use(express.cookieParser('sctalk admin manager'));
-// app.use(express.session());
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
@@ -43,32 +44,10 @@ router.forEach((v, i) => {
 
 });
 
-server.listen(port);
-webSocket.on('connection', (socket) => {
 
-
-    socket.on('group1',  (data) =>{
-        console.log('group1........')
-        socket.join('group1');
-    });
-
-    console.log('2121');
-    socket.on('login', (data) => {
-        console.log(data);
-    })
-    socket.on('message', (msg) => {
-        console.dir(msg);
-    });
-
-    //给除了自己以外的客户端广播消息
-    socket.broadcast.emit("server not me", { data: "hello,everyone" });
-
-    //给所有客户端广播消息
-    socket.emit('server send', { sisis: 23232 });
-})
-webConfig.port=port;
-webConfig.datatime=new Date().getTime();
+webConfig.port = port;
+webConfig.datatime = new Date().getTime();
 fs.writeFileSync(path.join(__dirname, 'src/config.json'), JSON.stringify(webConfig));
-
+server.listen(port);
 console.log('>start');
 exec(`start http://127.0.0.1:${port}/index`);
