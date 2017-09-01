@@ -1,13 +1,15 @@
 let cheerio = require('cheerio');
-let server = require('http');
+let http =  require('http');
 
 module.exports = (req, res) => {
+
     let url = req.body.url;
     let promise = new Promise((resolve, reject) => {
         return http.get(url, res => {
             let html = '';
-
+            console.log('start p ..'.info);
             res.on('data', (chunk) => {
+                console.log(' p++ .....'.info);
                 html += chunk;
             })
             res.on('end', res => {
@@ -29,7 +31,7 @@ module.exports = (req, res) => {
             });
         })
 
-        console.log(list);
+        console.log(list.info);
     }, error => {
         console.log(error);
     })

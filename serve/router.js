@@ -1,8 +1,7 @@
 let http = require('http');
 let qs = require('querystring');
 let url = require('url');
-let $ = require('cheerio');
-
+let filter = require('./filter');
 
 let router = [
     {
