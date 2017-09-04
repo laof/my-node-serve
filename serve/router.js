@@ -67,7 +67,7 @@ const router = [
         }
     },
     {
-        // isLogin: true,
+        isLogin: true,
         api: '/weather/forecast',
         http(req, res) {
 

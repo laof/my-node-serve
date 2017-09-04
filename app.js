@@ -1,11 +1,10 @@
 const express = require('express');
-const colors = require("colors")
+const colors = require("colors");
 const exec = require('child_process').exec;
 const cookieParser = require('cookie-parser');
 
 const bodyParser = require('body-parser');
 const session = require('express-session');
-
 
 const app = express();
 const server = require('http').Server(app);
@@ -26,8 +25,8 @@ colors.setTheme({
     error: 'red'
 });
 
-//   require('./serve/crawler');
-//   return;
+  require('./serve/crawler');
+  return;
 
 app.use(session({
     secret: '12345',
@@ -41,7 +40,7 @@ app.use(session({
 require('./serve/socket.io')(webSocket);
 require('./serve/setting')();
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('src'));
 
