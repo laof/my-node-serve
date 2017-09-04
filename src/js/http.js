@@ -1,16 +1,16 @@
 
 
 
-let vue = new Vue({
+const vue = new Vue({
   el: '#app',
 
   filters: {
     getkey(o) {
-      let key = Object.keys(o)[0];
+      const key = Object.keys(o)[0];
       return key;
     },
     getValue(o) {
-      let key = Object.keys(o)[0];
+      const key = Object.keys(o)[0];
       return o[key];
     }
   },
@@ -30,7 +30,7 @@ let vue = new Vue({
     ]
   },
   created() {
-    let promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       $.ajax({
         url: this.getUserInfo,
         type: 'post',
@@ -51,7 +51,7 @@ let vue = new Vue({
   methods: {
     gooutlogin() {
 
-      let promise = new Promise((resolve, reject) => {
+      const promise = new Promise((resolve, reject) => {
         $.ajax({
           url: this.outlogin,
           type: 'post',
@@ -78,7 +78,7 @@ let vue = new Vue({
     http() {
 
       this.request = '';
-      let param = {};
+      const param = {};
 
       if (this.sendtype === 'post') {
         this.param.forEach((v, i) => {
@@ -90,7 +90,7 @@ let vue = new Vue({
         });
       }
 
-      let promise = new Promise((resolve, reject) => {
+      const promise = new Promise((resolve, reject) => {
         $.ajax({
           url: this.url,
           type: this.sendtype,

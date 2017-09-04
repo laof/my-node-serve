@@ -19,7 +19,7 @@
   <!-- <script src="/socket.io/socket.io.js"></script> -->
   <!-- <script src="js/socket.io.js"></script>   -->
   <script>
-    let vue = new Vue({
+    const vue = new Vue({
       el: '#app',
       data: {
         url: '/user/login',
@@ -29,12 +29,12 @@
       methods: {
         submit() {
 
-          let param = {
+          const param = {
             username: this.username,
             password: this.password,
           };
 
-          let promise = new Promise((resolve, reject) => {
+          const promise = new Promise((resolve, reject) => {
             $.ajax({
               url: this.url,
               type: 'post',
@@ -60,8 +60,8 @@
       }
     })
     var webSocket = io.connect();
-    //let webSocket = new WebSocket('ws://127.0.0.1:3130');
-    // let webSocket = io.connect('http://localhost');
+    //const webSocket = new WebSocket('ws://127.0.0.1:3130');
+    // const webSocket = io.connect('http://localhost');
 
     webSocket.onopen = () => {
       console.log('链接成功');

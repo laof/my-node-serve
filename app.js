@@ -1,15 +1,17 @@
-let express = require('express');
-let colors = require( "colors")
-let exec = require('child_process').exec;
-let cookieParser = require('cookie-parser');
+const express = require('express');
+const colors = require("colors")
+const exec = require('child_process').exec;
+const cookieParser = require('cookie-parser');
 
-let bodyParser = require('body-parser');
-let session = require('express-session');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
-let app = express();
-let server = require('http').Server(app);
-let webSocket = require('socket.io')(server);
-let port = 3030;
+
+const app = express();
+const server = require('http').Server(app);
+const webSocket = require('socket.io')(server);
+const { router, setting } = require('./serve/router');
+const port = 3030;
 
 colors.setTheme({
     silly: 'rainbow',
@@ -22,10 +24,10 @@ colors.setTheme({
     warn: 'yellow',
     debug: 'blue',
     error: 'red'
-  });
+});
 
-  require('./serve/crawler');
-  return;
+//   require('./serve/crawler');
+//   return;
 
 app.use(session({
     secret: '12345',
@@ -38,20 +40,15 @@ app.use(session({
 
 require('./serve/socket.io')(webSocket);
 require('./serve/setting')();
-require('./serve/router')(app);
 
-
-
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static('src'));
 
-server.listen(port);
+router(app);
 
-
-
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
-
+server.listen(port);
 
 exec(`start http://127.0.0.1:${port}/index`);
 

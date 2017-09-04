@@ -1,14 +1,13 @@
-let http = require('http');
-let qs = require('querystring');
-let url = require('url');
-let filter = require('./filter');
-
-let router = [
+const http = require('http');
+const qs = require('querystring');
+const url = require('url');
+const filter = require('./filter');
+const router = [
     {
-        api:'/crawler',
-        http(req,res){
-            
-        }   
+        api: '/crawler',
+        http(req, res) {
+
+        }
     },
     {
         api: '/outlogin',
@@ -54,8 +53,8 @@ let router = [
         api: '/user/login',
         type: 'post',
         http(req, res) {
-            let username = req.body.username;
-            let password = req.body.password;
+            const username = req.body.username;
+            const password = req.body.password;
             if (username === 'admin' && password === 'adc123.com') {
                 req.session.userId = new Date().getTime();
                 req.session.username = req.body.username;
@@ -68,19 +67,19 @@ let router = [
         }
     },
     {
-        isLogin: true,
+        // isLogin: true,
         api: '/weather/forecast',
         http(req, res) {
 
-            let city = req.body.city;
+            const city = req.body.city;
             //console.log(req.headers.cookie);
             //console.log(arg.city);CHSC000000
 
-            let promise = new Promise((resolve, reject) => {
+            const promise = new Promise((resolve, reject) => {
 
                 http.get('http://tj.nineton.cn/Heart/index/all?city=' + city, (res) => {
                     let data = '';
-                    let titles = [];
+                    const titles = [];
                     res.setEncoding('utf-8');
                     //监听data事件，每次取一块数据
                     res.on('data', (chunk) => {
@@ -112,21 +111,18 @@ let router = [
     }
 ]
 
-
-module. exports = (app) => {
-
+exports.router = (app) => {
     router.forEach((v, i) => {
         let type = 'post';
         if (Object.is(v.type, 'get')) {
             type = 'get';
-        } else {
-
         }
+
         if (v.isLogin) {
             app[type](v.api, filter, v.http);
         } else {
             app[type](v.api, v.http);
         }
-
     });
-}
+};
+exports.setting = { name: 'router.js' };
