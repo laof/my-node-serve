@@ -12,6 +12,11 @@ const webSocket = require('socket.io')(server);
 const { router, setting } = require('./serve/router');
 const port = 3030;
 
+
+// download();
+// return;
+
+
 colors.setTheme({
     silly: 'rainbow',
     input: 'grey',
@@ -25,8 +30,8 @@ colors.setTheme({
     error: 'red'
 });
 
-  require('./serve/crawler');
-  return;
+//   require('./serve/crawler');
+//   return;
 
 app.use(session({
     secret: '12345',

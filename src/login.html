@@ -12,6 +12,7 @@
     <p>username：<input type="text" v-model:value="username"></p>
     <p>password：<input type="password" v-model:value="password"></p>
     <a href="javascript:;" v-on:click="submit()">submit</a>
+    <a href="javascript:;" v-on:click="testAjax()">/platformuser/login</a>
   </div>
   <script src="js/jquery3.2.1.js"></script>
   <script src="js/vue.js"></script>
@@ -23,10 +24,22 @@
       el: '#app',
       data: {
         url: '/user/login',
+        test: '/platformuser/login',
         username: 'admin',
         password: 'adc123.com'
       },
       methods: {
+        testAjax() {
+          $.ajax({
+            url: this.test,
+            type: 'post',
+            success(data) {
+              console.log(111);
+            }, error(error) {
+              console.log(222);
+            }
+          })
+        },
         submit() {
 
           const param = {
@@ -91,7 +104,6 @@
       console.log(1111);
       webSocket.emit('login', { login: 'I am LaoK' });
     }, 2111)
-
   </script>
 </body>
 

@@ -4,6 +4,18 @@ const url = require('url');
 const filter = require('./filter');
 const router = [
     {
+        api:'/platformuser/login',
+        http(req,res){
+            res.send({sucess:'ok--login'});
+        }
+    },
+    {
+        api:'/lova/abc',
+        http(req,res){
+            res.send({sucess:'ok--lova'});
+        }
+    },
+    {
         api: '/crawler',
         http(req, res) {
 

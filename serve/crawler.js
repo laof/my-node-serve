@@ -3,9 +3,46 @@ const http = require('http');
 const request = require('request');
 const fs = require('fs');
 const path = require('path');
+const phantom = require('phantom');
 
 const successURL = 'http://www.la5.com/';
 class Http {
+
+    async download() {
+        console.log('async');
+        const instance = await phantom.create();
+        const page = await instance.createPage();
+        const status =await page.open('https://music.163.com/#/song?id=169185');
+    
+        await page.includeJs('https://cdn.bootcss.com/jquery/1.10.0/jquery.min.js');
+    
+        await page.evaluate( function(){
+            var resData = 'defulat';
+            $.ajax({
+                url: 'https://music.163.com/weapi/song/enhance/player/url?csrf_token=',
+                type: 'post',
+                async: false,
+                data: {
+                    params: '3LJFZrU5yL5sd3FVTgckLjELOIU0VlfpL4B6d8ZlBOiLSXEn53732/fh20g/+FiirrEoHPzdpq8n192oCDfZfG5gndzCxLibT8WZ4DbtpkAbsXUqroLzXG0X6q5UozL/',
+                    encSecKey: '106aa1a4391542d1768aa40bc971b768bf081586b694897dbe43cd16f5f2c3b44ba924a70370008e3a0453ba9a76000c77de757d4fae286d35f687f906d0e3b76accd5616f4201a0ead815ca9bb4ddec24e011b59965064100d2e321e1816e2fcda7a6d21f959422cf97d61f497e755a8f627cc2028658d46a9cfe1981828918'
+                },
+                success:function(data) {
+    
+                    resData = JSON.parse(data);
+    
+                }, error:function() {
+                    resData = 'error!!';
+                }
+            })
+    
+            return resData;
+        }).then(function(res){
+            console.log(res.data[0].url);
+            
+        })
+        
+        await instance.exit();    
+    }
 
     getNameByPath(pathname) {
         const str = (pathname + '').replace(/\//g, '-').split('.');
