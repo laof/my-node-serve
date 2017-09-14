@@ -1,0 +1,23 @@
+{
+    "autoBrowser": true,
+    "port": 3030,
+    "portOccupancy": false,
+    "session": {
+        "maxAge": 10
+    },
+    "user": [
+        {
+            "name": "admin",
+            "password": "abc123.com"
+        },
+        {
+            "name": "root",
+            "password": "88885555"
+        }
+    ],
+    "crawler": {
+        "open": false
+    },
+    "static": "src",
+    "name": "lova"
+}

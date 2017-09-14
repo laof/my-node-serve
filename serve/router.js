@@ -2,19 +2,8 @@ const http = require('http');
 const qs = require('querystring');
 const url = require('url');
 const filter = require('./filter');
+const config = require('../config.json');
 const router = [
-    {
-        api:'/platformuser/login',
-        http(req,res){
-            res.send({sucess:'ok--login'});
-        }
-    },
-    {
-        api:'/lova/abc',
-        http(req,res){
-            res.send({sucess:'ok--lova'});
-        }
-    },
     {
         api: '/crawler',
         http(req, res) {
@@ -27,15 +16,15 @@ const router = [
             req.session.userId = null;
             req.session.username = null;
             req.session.password = null;
-            res.redirect('/index');
+            res.redirect('/home');
         }
     },
     {
-        api: '/index',
+        api: '/home',
         type: 'get',
         isLogin: true,
         http(req, res) {
-            res.sendfile('src/index1.html');
+            res.sendfile('src/home.html');
         }
     },
     {
@@ -43,7 +32,7 @@ const router = [
         type: 'get',
         http(req, res) {
             if (req.session.userId) {
-                res.redirect('/index');
+                res.redirect('/home');
             } else {
                 res.sendfile('src/login.html');
             }
@@ -67,11 +56,20 @@ const router = [
         http(req, res) {
             const username = req.body.username;
             const password = req.body.password;
-            if (username === 'admin' && password === 'adc123.com') {
+
+            let success = false;
+            config.user.forEach((v, i) => {
+                if (username === v.name && password === v.password) {
+                    success = true;
+                    return false;
+                }
+            })
+
+            if (success) {
                 req.session.userId = new Date().getTime();
                 req.session.username = req.body.username;
                 req.session.password = req.body.password;
-                res.redirect("/index1.html");
+                res.redirect("/home.html");
                 return;
             }
             res.send({ message: '用户名或者密码错误' });

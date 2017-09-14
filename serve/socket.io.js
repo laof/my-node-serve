@@ -2,12 +2,13 @@ module.exports = (webSocket) => {
 
     webSocket.on('connection', (socket) => {
 
-        socket.on('group1', (data) => {
-            console.log('group1........')
-            socket.join('group1');
+        socket.on('group', (data) => {
+            console.log('add group........')
+            socket.join('group');
         });
 
-        console.log('2121');
+        console.log('add socket success');
+
         socket.on('login', (data) => {
             console.log(data);
         })
@@ -17,6 +18,6 @@ module.exports = (webSocket) => {
 
         socket.broadcast.emit("server not me", { data: "hello,everyone" });
 
-        socket.emit('server send', { sisis: 23232 });
+        socket.emit('server send', { code: 200, data: new Date().toLocaleString() });
     })
 }

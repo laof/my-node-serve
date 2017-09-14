@@ -1,6 +1,6 @@
-let path = require('path');
-let fs = require('fs');
-let webConfig = require('../src/config.json');
+const fs = require('fs');
+const path = require('path');
+const webConfig = require('../src/config.json');
 
 module.exports = () => {
 

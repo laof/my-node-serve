@@ -12,7 +12,7 @@
     <p>username：<input type="text" v-model:value="username"></p>
     <p>password：<input type="password" v-model:value="password"></p>
     <a href="javascript:;" v-on:click="submit()">submit</a>
-    <a href="javascript:;" v-on:click="testAjax()">/platformuser/login</a>
+    <a href="javascript:;" v-on:click="testAjax()">platformuser</a>
   </div>
   <script src="js/jquery3.2.1.js"></script>
   <script src="js/vue.js"></script>
@@ -26,7 +26,7 @@
         url: '/user/login',
         test: '/platformuser/login',
         username: 'admin',
-        password: 'adc123.com'
+        password: 'abc123.com'
       },
       methods: {
         testAjax() {
@@ -87,7 +87,7 @@
       console.log('oh .. kill webSocket');
     }
 
-    webSocket.emit('message', { message: 21212 });
+    webSocket.emit('message', {message: new Date().toLocaleString(),state:true});
 
     webSocket.on("server not me", (e) => {
       console.log(e);
@@ -97,13 +97,17 @@
       console.log(e)
     })
 
-    webSocket.emit('group1');
+    webSocket.emit('group');
 
 
     setTimeout(() => {
-      console.log(1111);
-      webSocket.emit('login', { login: 'I am LaoK' });
-    }, 2111)
+      webSocket.emit('login', { login: window.location.href });
+    }, 2000)
+
+    setTimeout(()=>{
+      webSocket.emit('message',{message:window.navigator.appVersion});
+    },5000)
+
   </script>
 </body>
 
