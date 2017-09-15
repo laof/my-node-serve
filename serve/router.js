@@ -3,34 +3,34 @@ const qs = require('querystring');
 const url = require('url');
 const filter = require('./filter');
 const config = require('../config.json');
+const fs = require('fs');
+const convert = require('xml-js');
+const pathFile = 'router.xml';
+const content = fs.readFileSync(pathFile, 'utf-8');
+const xml2string = convert.xml2json(content, { compact: true, spaces: 4 });
 
-class CrwlerServe {
-    api = '/crawler';
-    serve(req, res) {
+class HttpServletRequest {
+
+    constructor() {
 
     }
-}
 
-class OutloginServe {
-    api = '/outlogin';
-    serve(req, res) {
+    CrwlerServe(req, res) {
+
+    }
+
+    OutloginServe(req, res) {
         req.session.userId = null;
         req.session.username = null;
         req.session.password = null;
         res.redirect('/home');
     }
-}
 
-class DefaultServe {
-    api = '/*';
-    http(req, res) {
+    DefaultServe(req, res) {
         res.sendfile('dist/index.html');
     }
-}
 
-class UserInfoServe {
-    api = '/userInfo';
-    http(req, res) {
+    UserInfoServe(req, res) {
         res.send({
             sucess: !0, user: {
                 id: req.session.userId,
@@ -38,12 +38,8 @@ class UserInfoServe {
             }
         });
     }
-}
 
-class LoginServe {
-    api = '/login';
-    type = 'get';
-    http(req, res) {
+    Login(req, res) {
         if (req.session.userId) {
             res.redirect('/home');
         } else {
@@ -51,21 +47,12 @@ class LoginServe {
         }
 
     }
-}
 
-class HomeServe {
-    api = '/home';
-    type = 'get';
-    isLogin = true;
-    http(req, res) {
+    HomeServe(req, res) {
         res.sendfile('src/home.html');
     }
-}
 
-class LoginServe {
-    api = '/user/login';
-    type = 'post';
-    http(req, res) {
+    LoginServe(req, res) {
         const username = req.body.username;
         const password = req.body.password;
 
@@ -87,12 +74,8 @@ class LoginServe {
         res.send({ message: '用户名或者密码错误' });
 
     }
-}
 
-class WeatherServe {
-    isLogin = true;
-    api = '/weather/forecast';
-    http(req, res) {
+    WeatherServe(req, res) {
 
         const city = req.body.city;
         //console.log(req.headers.cookie);
@@ -127,18 +110,22 @@ class WeatherServe {
     }
 }
 
-exports.router = (app) => {
-    console.log(this);
-    [].forEach((v, i) => {
-        let type = 'post';
-        if (Object.is(v.type, 'get')) {
-            type = 'get';
-        }
 
-        if (v.isLogin) {
-            app[type](v.api, filter, v.http);
+exports.router = (app) => {
+
+    const xml2json = JSON.parse(xml2string);
+    const router = xml2json.router.item;
+    const httpServletRequest = new HttpServletRequest();
+
+    router.forEach((v, i) => {
+        const attr = v._attributes;
+        const route = attr.route;
+        const type = attr.type ? attr.type : 'post';
+
+        if (Object.is("true", attr.login_check)) {
+            app[type](attr.url, filter, httpServletRequest[route]);
         } else {
-            app[type](v.api, v.http);
+            app[type](attr.url, httpServletRequest[route]);
         }
     });
 };

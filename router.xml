@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<router object="serve">
+    <!-- 天气查询 -->
+    <item url="/weather/forecast" route="WeatherServe" type="post" login_check="true"></item>
+    <!-- 退出 -->
+    <item url="/outlogin" route="OutloginServe" type="post" login_check="false"></item>
+    <!-- 登录，校验用户名密码 -->
+    <item url="/user/login" route="LoginServe" type="post" login_check="false"></item>
+    <!-- 获取用户信息 -->
+    <item url="/userInfo" route="UserInfoServe" type="post" login_check="true"></item>
+    <!-- 跳转登录页面 -->
+    <item url="/login" route="Login" type="get" login_check="false"></item>
+    <!-- 跳转主页 -->
+    <item url="/home" route="HomeServe" type="get" login_check="true"></item>
+    <!-- 爬虫 -->
+    <item url="/crawler" route="CrwlerServe" type="post" login_check="false"></item>
+    <!-- 匹配所有 -->
+    <item url="/*" route="DefaultServe" type="post" login_check="false"></item>
+</router>
