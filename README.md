@@ -2,10 +2,10 @@
 
 ## This is a server for nodejs language
 
-[![Build Status](https://travis-ci.org/Microsoft/vscode.svg?branch=master)](https://travis-ci.org/Microsoft/vscode)
-[![Build Status](https://ci.appveyor.com/api/projects/status/vuhlhg80tj3e2a0l/branch/master?svg=true)](https://ci.appveyor.com/project/VSCode/vscode)
-[![Coverage Status](https://img.shields.io/coveralls/Microsoft/vscode/master.svg)](https://coveralls.io/github/Microsoft/vscode?branch=master)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/Microsoft/vscode)
+[![Build Status](https://travis-ci.org/Microsoft/vscode.svg?branch=master)]()
+[![Build Status](https://ci.appveyor.com/api/projects/status/vuhlhg80tj3e2a0l/branch/master?svg=true)]()
+[![Coverage Status](https://img.shields.io/coveralls/Microsoft/vscode/master.svg)]()
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)]()
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
 
@@ -39,22 +39,32 @@ Just because Node is designed without threads, doesn't mean you cannot take adva
 ## This code may have nothing to do with the project
 
 ```javascript
-const http = require('http');
+class Widget{
+    constructor() {
+        this.runXMLHttpRequest();
+        this.runDocument();
+    }
 
-const hostname = '127.0.0.1';
+    async runXMLHttpRequest() {
+        const res = await this.getResourcesByAjax(config.XMLHttpRequest.subPageURL);
+        const file = config.saveDir + TradePortalUtil.random() + '.mp3';
+        this.downLoadFile(config.XMLHttpRequest.parse(res), file);
+        util.log('下载' + file.green);
+    }
 
-const port = 3000;
+    async runDocument() {
+        console.log(1222);
+        this.getResourcesByElement(config.document.subPageURL);
+    }
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
-});
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+    downLoadFile(url, savePath, callback = () => { }) {
+        const stream = fs.createWriteStream(savePath);
+        request(url, (err, res, body) => {
 
+        }).pipe(stream).on('close', callback);
+    }
+}
 ```
 ## Things that might be related to the project
 * Turn on the service and start here together.
