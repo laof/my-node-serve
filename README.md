@@ -62,13 +62,8 @@ server.listen(port, hostname, () => {
 npm start
 ````
 * Using crawlers, the project uses NetEase resources in the phantomjs scratch zone
-```JSON
-{
-
-    "crawler":{
-        "open":true
-    }
-}
+```javascript
+npm run crawler
 ````
 * Configure the session expiration time, in units of minutes
 ```JSON
