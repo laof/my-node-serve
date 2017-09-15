@@ -4,24 +4,19 @@ const exec = require('child_process').exec;
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-
 const app = express();
 const server = require('http').Server(app);
 const webSocket = require('socket.io')(server);
 const { router, setting } = require('./serve/router');
 
+const { crypto, util, TradePortalUtil } = require('./serve/Util');
+
+
 require('./serve/socket.io')(webSocket);
 require('./serve/setting')();
 
+
 const config = require('./config.json');
-
-require("colors").setTheme({ silly: 'rainbow', input: 'grey', verbose: 'cyan', prompt: 'grey', info: 'green', data: 'grey', help: 'cyan', warn: 'yellow', debug: 'blue', error: 'red' });
-
-if (config.crawler.open) {
-     require('./serve/crawler');
-    return;
-}
-
 
 let port = config.port;
 
@@ -37,7 +32,7 @@ const portCheck = (port) => {
 
         server.on('error', (err) => {
             if (err.code === 'EADDRINUSE') {
-                console.log('The port[' + port + '] is occupied, please change other port.');
+                util.log('The port[' + port + '] is occupied, please change other port.');
                 resolve(1);
             } else {
                 resolve(2);
@@ -100,14 +95,14 @@ portPromise.then(port => {
 
         config.autoBrowser && exec(`start http://127.0.0.1:${port}/home`);
 
-        console.log(`[${new Date().toLocaleString()}] Service startup successful  127.0.0.1:${port} `.info);
+        util.log(` Service startup successful  127.0.0.1:${port} `.info);
     })
     server.on('error', (err) => {
-        console.log(`warn: this port number ${port}  may be occupied `.warn);
+        util.log(`warn: this port number ${port}  may be occupied `.warn);
     })
 
 }).catch(err => {
-    console.log('error: An unknown error was detected '.error);
+    util.log('error: An unknown error was detected '.error);
 })
 
 
