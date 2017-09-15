@@ -49,11 +49,9 @@ class Widget{
         const res = await this.getResourcesByAjax(config.XMLHttpRequest.subPageURL);
         const file = config.saveDir + TradePortalUtil.random() + '.mp3';
         this.downLoadFile(config.XMLHttpRequest.parse(res), file);
-        util.log('下载' + file.green);
     }
 
     async runDocument() {
-        console.log(1222);
         this.getResourcesByElement(config.document.subPageURL);
     }
 
