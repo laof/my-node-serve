@@ -2,7 +2,7 @@
 
 ## This is a server for nodejs language
 
-![Build Status](https://travis-ci.org/Microsoft/vscode.svg?branch=master)
+[![Build Status](https://travis-ci.org/Microsoft/vscode.svg?branch=master)]()
 [![Build Status](https://ci.appveyor.com/api/projects/status/vuhlhg80tj3e2a0l/branch/master?svg=true)]()
 [![Coverage Status](https://img.shields.io/coveralls/Microsoft/vscode/master.svg)]()
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)]()
