@@ -2,7 +2,7 @@
 
 ## This is a server for nodejs language
 
-[![Build Status](https://travis-ci.org/Microsoft/vscode.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/Microsoft/vscode.svg?branch=master)](javascript:;)
 [![Build Status](https://ci.appveyor.com/api/projects/status/vuhlhg80tj3e2a0l/branch/master?svg=true)]()
 [![Coverage Status](https://img.shields.io/coveralls/Microsoft/vscode/master.svg)]()
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)]()
@@ -13,7 +13,7 @@ Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.j
 As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. In the following "hello world" example, many connections can be handled concurrently. Upon each connection the callback is fired, but if there is no work to be done, Node will sleep.
 
 <p align="center">
-  <img alt="VS Code in action" src="https://cloud.githubusercontent.com/assets/11839736/16642200/6624dde0-43bd-11e6-8595-c81885ba0dc2.png">
+  <img src="https://cloud.githubusercontent.com/assets/11839736/16642200/6624dde0-43bd-11e6-8595-c81885ba0dc2.png">
 </p>
 
 This is in contrast to today's more common concurrency model where OS threads are employed. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node are free from worries of dead-locking the process, since there are no locks. Almost no function in Node directly performs I/O, so the process never blocks. Because nothing blocks, scalable systems are very reasonable to develop in Node.
@@ -36,7 +36,7 @@ Just because Node is designed without threads, doesn't mean you cannot take adva
 * It's easy to write the tools you want.
 * There's a lot more besides these.
 
-## This code may have nothing to do with the project
+## Project code fragment display
 
 ```javascript
 class Widget{
